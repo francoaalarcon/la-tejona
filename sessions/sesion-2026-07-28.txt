@@ -1,0 +1,85 @@
+════════════════════════════════════════════════
+LA TEJONA — REPORTE DE SESIÓN
+Fecha: 28 de julio de 2026
+════════════════════════════════════════════════
+
+RELEASE GENERADO
+  Versión: v0.1.0
+  Archivo: N/A (prototipos HTML, sin empaquetado)
+
+────────────────────────────────────────────────
+RESUMEN EJECUTIVO
+────────────────────────────────────────────────
+Sesión inicial del proyecto. Se configuró el repositorio GitHub, se analizaron
+los diseños de referencia (d1 estilo EQUIP, d2 estilo Pacasmayo) y se crearon
+las dos landing pages HTML completas con la paleta de colores oficial y los
+assets del cliente integrados en carpetas propias por versión.
+
+────────────────────────────────────────────────
+CAMBIOS IMPLEMENTADOS
+────────────────────────────────────────────────
+
+  SETUP / REPO
+  ✓ Repositorio GitHub creado: francoaalarcon/la-tejona
+  ✓ Repo clonado en /home/franco/tejona
+  ✓ Estructura inicial commiteada (version-1/, version-2/, README.md)
+  ✓ Paleta de colores extraída de latejona.com (8 variables CSS)
+  ✓ Imágenes del cliente analizadas (carpeta imagenes/)
+
+  VERSION 1 — Estilo EQUIP / Marketplace B2B
+  ✓ Navbar sticky dark → transparente a sólido al scroll
+  ✓ Hero con 3 slides (autoplay 5s, swipe táctil, flechas, dots)
+  ✓ Barra de stats con contadores animados (Intersection Observer)
+  ✓ Sección "Cómo funciona" — 3 pasos
+  ✓ Grid 6 categorías de productos con hover animado
+  ✓ Marquee CSS infinito de marcas
+  ✓ Sección testimonios y ventajas
+  ✓ Footer dark 4 columnas
+  ✓ Botón WhatsApp flotante con pulse
+
+  VERSION 2 — Estilo Pacasmayo / Institucional
+  ✓ Navbar blanca con hint de dropdowns
+  ✓ Hero full-height con gradiente diagonal
+  ✓ Sección "Nuestro Propósito"
+  ✓ Slider de productos (4 slides, imagen + texto descriptivo)
+  ✓ Grid 2x2 "Por tipo de proyecto" con hover zoom
+  ✓ Sección stats en navy oscuro con contadores animados
+  ✓ 3 columnas "Por qué elegirnos" con íconos SVG
+  ✓ 3 cards de blog / novedades
+  ✓ Footer 4 columnas
+  ✓ Botón WhatsApp flotante
+
+  ASSETS
+  ✓ version-1/assets/ — 10 imágenes autocontenidas
+  ✓ version-2/assets/ — 9 imágenes autocontenidas
+  ✓ Rutas HTML actualizadas a assets/ locales (sin dependencia de ../imagenes/)
+
+────────────────────────────────────────────────
+ARCHIVOS MODIFICADOS / CREADOS
+────────────────────────────────────────────────
+  version-1/index.html         — Landing v1 completa (~2371 líneas)
+  version-1/assets/            — 10 imágenes del cliente
+  version-2/index.html         — Landing v2 completa
+  version-2/assets/            — 9 imágenes del cliente
+  CLAUDE.md                    — Documentación del proyecto (nuevo)
+  sessions/sesion-2026-07-28.txt — Este reporte
+
+────────────────────────────────────────────────
+CONFIGURACIÓN PENDIENTE (lado cliente)
+────────────────────────────────────────────────
+  □ Revisar ambas versiones en el navegador y dar feedback
+  □ Elegir cuál versión se convierte a tema WordPress
+  □ Confirmar datos de contacto reales (teléfono, email, dirección)
+  □ Confirmar si el número de WhatsApp es +59121234567
+  □ Proveer textos reales para secciones (nosotros, testimonios, etc.)
+
+────────────────────────────────────────────────
+PRÓXIMA SESIÓN — SUGERENCIAS
+────────────────────────────────────────────────
+  • Aplicar feedback visual del cliente sobre las 2 versiones
+  • Ajustar colores, tipografía o layout según observaciones
+  • Una vez aprobada la versión, iniciar conversión a tema WordPress
+  • Planificar estructura de páginas WordPress (Home, Catálogo, Marcas, Contacto)
+  • Configurar WooCommerce en modo catálogo
+
+════════════════════════════════════════════════
