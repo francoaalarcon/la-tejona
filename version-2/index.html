@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Tejona — Materiales de Construcción en Bolivia</title>
+  <meta name="description" content="Distribuidora líder de materiales de construcción en Bolivia. Tejas, placas, pinturas y más. La Paz, Bolivia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      color: #111;
+      background: #fff;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Design tokens ─────────────────────────────────────────── */
+    :root {
+      --blue:    #0089e4;
+      --navy:    #192730;
+      --black:   #000000;
+      --gray-bg: #f6f6f8;
+      --gray-alt:#ecedef;
+      --white:   #ffffff;
+      --border:  #dddddd;
+      --radius:  4px;
+      --transition: 0.35s ease;
+    }
+
+    /* ─── Typography helpers ────────────────────────────────────── */
+    h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; line-height: 1.2; }
+
+    .section-label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.18;
+      text-wrap: pretty;
+    }
+    .section-body {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #555;
+      max-width: 640px;
+    }
+
+    /* ─── Buttons ───────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius);
+      padding: 13px 28px;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .btn--primary  { background: var(--blue);  color: #fff; border-color: var(--blue); }
+    .btn--primary:hover  { background: #0073c4; border-color: #0073c4; }
+    .btn--outline  { background: transparent; color: #fff; border-color: rgba(255,255,255,0.6); }
+    .btn--outline:hover  { border-color: #fff; background: rgba(255,255,255,0.08); }
+    .btn--outline-dark { background: transparent; color: var(--navy); border-color: var(--navy); }
+    .btn--outline-dark:hover { background: var(--navy); color: #fff; }
+    .btn--outline-blue { background: transparent; color: var(--blue); border-color: var(--blue); }
+    .btn--outline-blue:hover { background: var(--blue); color: #fff; }
+    .btn--sm { padding: 9px 20px; font-size: 12px; }
+
+    /* ─── Fade-in ───────────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.delay-1 { transition-delay: 0.10s; }
+    .fade-up.delay-2 { transition-delay: 0.20s; }
+    .fade-up.delay-3 { transition-delay: 0.30s; }
+    .fade-up.delay-4 { transition-delay: 0.40s; }
+
+    /* ─── Container ─────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ─── Section separator ─────────────────────────────────────── */
+    .sep {
+      width: 48px;
+      height: 3px;
+      background: var(--blue);
+      border-radius: 2px;
+      margin: 16px auto 28px;
+    }
+    .sep--left { margin-left: 0; }
+
+    /* ══════════════════════════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════════════════════════ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--transition);
+    }
+    .navbar--scrolled {
+      box-shadow: 0 2px 28px rgba(0,0,0,0.09);
+      border-bottom-color: transparent;
+    }
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+      transition: height var(--transition);
+    }
+    .navbar--scrolled .navbar__inner { height: 60px; }
+
+    .navbar__logo img {
+      max-height: 55px;
+      width: auto;
+      transition: max-height var(--transition);
+    }
+    .navbar--scrolled .navbar__logo img { max-height: 42px; }
+
+    /* Desktop nav links */
+    .navbar__nav { display: flex; align-items: center; gap: 2px; }
+    .navbar__nav > li { position: relative; }
+    .navbar__nav > li > a {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      border-radius: var(--radius);
+      transition: color var(--transition), background var(--transition);
+    }
+    .navbar__nav > li > a:hover { color: var(--blue); background: var(--gray-bg); }
+
+    .chevron {
+      width: 10px; height: 10px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+      transition: transform var(--transition);
+    }
+    .navbar__nav > li:hover .chevron { transform: rotate(180deg); }
+
+    /* Dropdown */
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      min-width: 208px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      padding: 8px 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .navbar__nav > li:hover .dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .dropdown a {
+      display: block;
+      padding: 9px 18px;
+      font-size: 13px;
+      color: #444;
+      transition: background 0.15s, color 0.15s;
+    }
+    .dropdown a:hover { background: var(--gray-bg); color: var(--blue); }
+
+    .navbar__actions { display: flex; align-items: center; gap: 12px; }
+
+    /* Hamburger */
+    .navbar__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .navbar__hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--navy); border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding: 16px 28px 28px;
+      gap: 4px;
+    }
+    .mobile-nav a {
+      display: block;
+      padding: 11px 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      border-bottom: 1px solid var(--gray-alt);
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav.open { display: flex; }
+
+    @media (max-width: 900px) {
+      .navbar__nav { display: none; }
+      .navbar__hamburger { display: flex; }
+      .navbar__actions .btn { display: none; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background-image: url('../imagenes/TEJONA-FOTOS-FONDOS-2.webp');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        95deg,
+        rgba(25,39,48,0.93) 0%,
+        rgba(25,39,48,0.75) 42%,
+        rgba(25,39,48,0.18) 72%,
+        transparent 100%
+      );
+    }
+    @media (max-width: 768px) {
+      .hero::before {
+        background: linear-gradient(180deg, rgba(25,39,48,0.88) 0%, rgba(25,39,48,0.65) 100%);
+      }
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      padding-top: 74px;
+      max-width: 640px;
+    }
+    .hero__eyebrow {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(0,137,228,0.12);
+      border: 1px solid rgba(0,137,228,0.28);
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+    .hero__title {
+      font-size: clamp(36px, 5.5vw, 66px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 24px;
+      text-wrap: pretty;
+    }
+    .hero__title em { font-style: normal; color: var(--blue); }
+    .hero__subtitle {
+      font-size: clamp(15px, 1.6vw, 18px);
+      line-height: 1.78;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 48px;
+      max-width: 520px;
+    }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    /* Scroll indicator */
+    .hero__scroll {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero__scroll span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.42);
+    }
+    .hero__scroll-line {
+      width: 1px;
+      height: 52px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.38), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.9; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       PROPÓSITO
+    ══════════════════════════════════════════════════════════════ */
+    .proposito {
+      padding: 128px 0;
+      background: #fff;
+      text-align: center;
+    }
+    .proposito .section-title { margin: 0 auto 32px; max-width: 680px; }
+    .proposito .section-body  { margin: 0 auto 52px; }
+    .proposito .sep { margin: 0 auto 32px; }
+
+    /* ══════════════════════════════════════════════════════════════
+       PRODUCTOS — SLIDER
+    ══════════════════════════════════════════════════════════════ */
+    .productos {
+      padding: 104px 0;
+      background: var(--gray-bg);
+      overflow: hidden;
+    }
+    .productos__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .productos__controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .slider-btn {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+      flex-shrink: 0;
+    }
+    .slider-btn:hover { border-color: var(--blue); background: var(--blue); }
+    .slider-btn:hover svg { stroke: #fff; }
+    .slider-btn svg {
+      width: 18px; height: 18px;
+      fill: none; stroke: var(--navy);
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+      transition: stroke var(--transition);
+    }
+    .slider-indicators { display: flex; gap: 8px; align-items: center; }
+    .slider-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .slider-dot.active { background: var(--blue); transform: scale(1.4); }
+
+    .slider-track-wrapper { overflow: hidden; }
+    .slider-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    /* Each card takes full width */
+    .slide-card {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 48px rgba(0,0,0,0.09);
+    }
+    @media (max-width: 768px) {
+      .slide-card { grid-template-columns: 1fr; }
+    }
+    .slide-card__image {
+      height: 520px;
+      overflow: hidden;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .slide-card__image { height: 260px; }
+    }
+    .slide-card__image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .slide-card:hover .slide-card__image img { transform: scale(1.04); }
+    .slide-card__body {
+      background: #fff;
+      padding: 64px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      .slide-card__body { padding: 36px 28px; }
+    }
+    .slide-card__category {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+    .slide-card__title {
+      font-size: clamp(24px, 2.8vw, 36px);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .slide-card__desc {
+      font-size: 15px;
+      line-height: 1.78;
+      color: #666;
+      margin-bottom: 44px;
+    }
+    .slide-card__counter {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #bbb;
+      letter-spacing: 0.12em;
+      margin-top: 36px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       TIPO DE PROYECTO
+    ══════════════════════════════════════════════════════════════ */
+    .proyectos {
+      padding: 104px 0;
+      background: #fff;
+    }
+    .proyectos__header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .proyectos__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    @media (max-width: 680px) {
+      .proyectos__grid { grid-template-columns: 1fr; }
+    }
+
+    .proyecto-card {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    @media (max-width: 680px) {
+      .proyecto-card { height: 270px; }
+    }
+    .proyecto-card__bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.7s ease;
+    }
+    .proyecto-card:hover .proyecto-card__bg { transform: scale(1.07); }
+    .proyecto-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(25,39,48,0.88) 0%,
+        rgba(25,39,48,0.30) 55%,
+        transparent 100%
+      );
+      transition: background var(--transition);
+    }
+    .proyecto-card:hover .proyecto-card__overlay {
+      background: linear-gradient(
+        to top,
+        rgba(25,39,48,0.75) 0%,
+        rgba(25,39,48,0.42) 60%,
+        rgba(25,39,48,0.10) 100%
+      );
+    }
+    .proyecto-card__content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 36px 36px 32px;
+      z-index: 2;
+    }
+    .proyecto-card__tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .proyecto-card__title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .proyecto-card__desc {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.6;
+    }
+    .proyecto-card__arrow {
+      position: absolute;
+      top: 26px; right: 26px;
+      width: 40px; height: 40px;
+      border: 1.5px solid rgba(255,255,255,0.32);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity var(--transition), transform var(--transition), border-color var(--transition);
+    }
+    .proyecto-card:hover .proyecto-card__arrow {
+      opacity: 1;
+      transform: translateY(0);
+      border-color: rgba(255,255,255,0.7);
+    }
+    .proyecto-card__arrow svg {
+      width: 13px; height: 13px;
+      fill: none; stroke: #fff; stroke-width: 2;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       ESTADÍSTICAS
+    ══════════════════════════════════════════════════════════════ */
+    .estadisticas {
+      background: var(--navy);
+      padding: 100px 0;
+    }
+    .estadisticas__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: rgba(255,255,255,0.06);
+      gap: 1px;
+    }
+    @media (max-width: 768px) {
+      .estadisticas__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 420px) {
+      .estadisticas__grid { grid-template-columns: 1fr; }
+    }
+    .stat-item {
+      background: var(--navy);
+      padding: 60px 44px;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .stat-number span.accent { color: var(--blue); }
+    .stat-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.40);
+    }
+    .stat-divider {
+      width: 28px; height: 2px;
+      background: var(--blue);
+      border-radius: 1px;
+      margin: 18px auto 0;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       POR QUÉ ELEGIRNOS
+    ══════════════════════════════════════════════════════════════ */
+    .por-que {
+      padding: 120px 0;
+      background: var(--gray-bg);
+    }
+    .por-que__header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .por-que__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    @media (max-width: 900px) {
+      .por-que__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; gap: 28px; }
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 52px 40px;
+      border: 1px solid var(--border);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .feature-card:hover { box-shadow: 0 8px 48px rgba(0,0,0,0.08); transform: translateY(-4px); }
+    .feature-card__icon {
+      width: 52px; height: 52px;
+      background: rgba(0,137,228,0.08);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .feature-card__icon svg {
+      width: 26px; height: 26px;
+      stroke: var(--blue); fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .feature-card__title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .feature-card__text {
+      font-size: 14.5px;
+      line-height: 1.78;
+      color: #666;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       NOVEDADES
+    ══════════════════════════════════════════════════════════════ */
+    .novedades {
+      padding: 120px 0;
+      background: #fff;
+    }
+    .novedades__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 64px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 580px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+    .blog-card {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #fff;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .blog-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.09); transform: translateY(-4px); }
+    .blog-card__image { height: 220px; overflow: hidden; }
+    .blog-card__image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .blog-card:hover .blog-card__image img { transform: scale(1.05); }
+    .blog-card__body { padding: 28px 28px 32px; }
+    .blog-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .blog-card__cat {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(0,137,228,0.08);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .blog-card__date { font-size: 12px; color: #aaa; }
+    .blog-card__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.42;
+      margin-bottom: 18px;
+      text-wrap: pretty;
+    }
+    .blog-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+      transition: gap var(--transition);
+    }
+    .blog-card__link:hover { gap: 10px; }
+    .blog-card__link svg {
+      width: 14px; height: 14px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════════ */
+    .footer { background: var(--navy); padding: 84px 0 0; }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    @media (max-width: 900px) {
+      .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 560px) {
+      .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    .footer__brand-logo {
+      margin-bottom: 22px;
+      filter: brightness(0) invert(1);
+      max-height: 46px;
+      width: auto;
+    }
+    .footer__brand-desc {
+      font-size: 13.5px;
+      line-height: 1.78;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 28px;
+      max-width: 290px;
+    }
+    .footer__socials { display: flex; gap: 10px; }
+    .social-icon {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .social-icon:hover { border-color: var(--blue); background: var(--blue); }
+    .social-icon svg {
+      width: 15px; height: 15px;
+      fill: rgba(255,255,255,0.6);
+      transition: fill var(--transition);
+    }
+    .social-icon:hover svg { fill: #fff; }
+
+    .footer__col-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.32);
+      margin-bottom: 22px;
+    }
+    .footer__links { display: flex; flex-direction: column; gap: 10px; }
+    .footer__links a {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.58);
+      transition: color var(--transition);
+    }
+    .footer__links a:hover { color: #fff; }
+
+    .footer__contact-item {
+      display: flex; align-items: flex-start;
+      gap: 10px; margin-bottom: 14px;
+    }
+    .footer__contact-item svg {
+      width: 15px; height: 15px;
+      fill: none; stroke: var(--blue);
+      stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .footer__contact-item span {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.5;
+    }
+    .footer__bottom {
+      padding: 24px 0;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer__bottom p { font-size: 12.5px; color: rgba(255,255,255,0.25); }
+    .footer__bottom-links { display: flex; gap: 20px; }
+    .footer__bottom-links a {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.25);
+      transition: color 0.2s;
+    }
+    .footer__bottom-links a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ══════════════════════════════════════════════════════════════
+       WHATSAPP FLOTANTE
+    ══════════════════════════════════════════════════════════════ */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .whatsapp-fab__tooltip {
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(8px);
+      transition: opacity 0.25s, transform 0.25s;
+      pointer-events: none;
+    }
+    .whatsapp-fab:hover .whatsapp-fab__tooltip { opacity: 1; transform: translateX(0); }
+    .whatsapp-fab__btn {
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.38);
+      transition: transform 0.25s, box-shadow 0.25s;
+      flex-shrink: 0;
+    }
+    .whatsapp-fab:hover .whatsapp-fab__btn {
+      transform: scale(1.08);
+      box-shadow: 0 10px 32px rgba(37,211,102,0.50);
+    }
+    .whatsapp-fab__btn svg { width: 30px; height: 30px; fill: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════
+       NAVBAR
+  ══════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="navbar__inner">
+
+        <a href="#" class="navbar__logo">
+          <img src="../imagenes/TEJONA-LOGOS-E-IMAGENES-500X500.png" alt="La Tejona" />
+        </a>
+
+        <ul class="navbar__nav">
+          <li><a href="#">Nosotros</a></li>
+          <li>
+            <a href="#">Productos
+              <svg class="chevron" viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg>
+            </a>
+            <div class="dropdown">
+              <a href="#">Tejas Españolas</a>
+              <a href="#">Flexitejas</a>
+              <a href="#">Placas Cementicia</a>
+              <a href="#">Pinturas Ribepar</a>
+            </div>
+          </li>
+          <li>
+            <a href="#">Proyectos
+              <svg class="chevron" viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1"/></svg>
+            </a>
+            <div class="dropdown">
+              <a href="#">Vivienda Familiar</a>
+              <a href="#">Proyectos Comerciales</a>
+              <a href="#">Obra Industrial</a>
+              <a href="#">Proyectos Rurales</a>
+            </div>
+          </li>
+          <li><a href="#">Novedades</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+
+        <div class="navbar__actions">
+          <a href="https://wa.me/59121234567" class="btn btn--primary btn--sm">Solicitar cotización</a>
+          <div class="navbar__hamburger" id="hamburger" role="button" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#">Nosotros</a>
+      <a href="#">Productos</a>
+      <a href="#">Proyectos</a>
+      <a href="#">Novedades</a>
+      <a href="#">Contacto</a>
+      <a href="https://wa.me/59121234567" style="color: var(--blue);">Solicitar cotización →</a>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════
+       HERO
+  ══════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero__content fade-up">
+        <span class="hero__eyebrow">Distribuidora líder en Bolivia</span>
+        <h1 class="hero__title">
+          Construyendo Bolivia<br>con materiales<br><em>de calidad</em>
+        </h1>
+        <p class="hero__subtitle">
+          Somos el socio estratégico de constructores, arquitectos y familias. Marcas líderes, asesoramiento experto y entrega a obra en todo el país.
+        </p>
+        <div class="hero__actions">
+          <a href="#productos" class="btn btn--primary">Ver productos</a>
+          <a href="#proposito" class="btn btn--outline">Conocer más</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       PROPÓSITO
+  ══════════════════════════════ -->
+  <section class="proposito" id="proposito">
+    <div class="container">
+      <span class="section-label fade-up">Nuestro Propósito</span>
+      <div class="sep fade-up delay-1"></div>
+      <h2 class="section-title fade-up delay-1">El socio estratégico<br>de cada obra</h2>
+      <p class="section-body fade-up delay-2" style="margin: 28px auto 52px;">
+        En La Tejona somos el socio estratégico de cada proyecto de construcción. Conectamos a constructores, arquitectos y familias con los mejores productos del mercado, respaldados por marcas líderes y un equipo comprometido con tu obra.
+      </p>
+      <div class="fade-up delay-3">
+        <a href="#" class="btn btn--outline-dark">Conocer nuestra historia</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       PRODUCTOS — SLIDER
+  ══════════════════════════════ -->
+  <section class="productos" id="productos">
+    <div class="container">
+
+      <div class="productos__header">
+        <div class="fade-up">
+          <span class="section-label">Catálogo</span>
+          <h2 class="section-title">Nuestros Productos</h2>
+        </div>
+        <div class="productos__controls fade-up delay-1">
+          <div class="slider-indicators" id="sliderDots"></div>
+          <button class="slider-btn" id="prevBtn" aria-label="Anterior">
+            <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+          </button>
+          <button class="slider-btn" id="nextBtn" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="slider-track-wrapper fade-up delay-2">
+        <div class="slider-track" id="sliderTrack">
+
+          <!-- Slide 1: Tejas Españolas -->
+          <div class="slide-card">
+            <div class="slide-card__image">
+              <img src="../imagenes/TEJA-ESPANOLA-CERAMICA.webp" alt="Tejas Españolas" loading="lazy" />
+            </div>
+            <div class="slide-card__body">
+              <div class="slide-card__category">Techado · Cerámica</div>
+              <h3 class="slide-card__title">Tejas Españolas</h3>
+              <p class="slide-card__desc">Resistencia y elegancia para tu techado, certificadas para el clima boliviano. Una solución probada en proyectos residenciales y comerciales en toda la región.</p>
+              <div><a href="#" class="btn btn--outline-blue">Ver producto</a></div>
+              <div class="slide-card__counter">01 / 04</div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Flexitejas -->
+          <div class="slide-card">
+            <div class="slide-card__image">
+              <img src="../imagenes/FLEXITEJA-1.webp" alt="Flexitejas" loading="lazy" />
+            </div>
+            <div class="slide-card__body">
+              <div class="slide-card__category">Techado · Flexible</div>
+              <h3 class="slide-card__title">Flexitejas</h3>
+              <p class="slide-card__desc">Versatilidad y durabilidad en cada instalación. Fácil colocación y adaptables a diversas superficies, ideales para proyectos donde la practicidad es prioridad.</p>
+              <div><a href="#" class="btn btn--outline-blue">Ver producto</a></div>
+              <div class="slide-card__counter">02 / 04</div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Placas Cementicia -->
+          <div class="slide-card">
+            <div class="slide-card__image">
+              <img src="../imagenes/MAXIPLACA-2.webp" alt="Placas Cementicia" loading="lazy" />
+            </div>
+            <div class="slide-card__body">
+              <div class="slide-card__category">Construcción · Muros</div>
+              <h3 class="slide-card__title">Placas Cementicia</h3>
+              <p class="slide-card__desc">La solución moderna para paredes, tabiques y fachadas. Alta resistencia a la humedad y el impacto, compatible con los sistemas de construcción en seco más exigentes.</p>
+              <div><a href="#" class="btn btn--outline-blue">Ver producto</a></div>
+              <div class="slide-card__counter">03 / 04</div>
+            </div>
+          </div>
+
+          <!-- Slide 4: Pinturas -->
+          <div class="slide-card">
+            <div class="slide-card__image">
+              <img src="../imagenes/TEJONA-PINTURAS.webp" alt="Pinturas Ribepar" loading="lazy" />
+            </div>
+            <div class="slide-card__body">
+              <div class="slide-card__category">Acabados · Pintura</div>
+              <h3 class="slide-card__title">Pinturas Ribepar</h3>
+              <p class="slide-card__desc">Colores duraderos y protección superior para cada superficie. Una gama completa de acabados interiores y exteriores respaldada por una marca de reconocida trayectoria.</p>
+              <div><a href="#" class="btn btn--outline-blue">Ver producto</a></div>
+              <div class="slide-card__counter">04 / 04</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       TIPO DE PROYECTO
+  ══════════════════════════════ -->
+  <section class="proyectos" id="proyectos">
+    <div class="container">
+      <div class="proyectos__header fade-up">
+        <span class="section-label">Soluciones</span>
+        <div class="sep" style="margin: 14px auto 24px;"></div>
+        <h2 class="section-title">Por tipo de proyecto</h2>
+      </div>
+
+      <div class="proyectos__grid">
+
+        <div class="proyecto-card fade-up">
+          <div class="proyecto-card__bg" style="background-image: url('../imagenes/TEJONA-FOTOS-FONDOS-2.webp');"></div>
+          <div class="proyecto-card__overlay"></div>
+          <div class="proyecto-card__arrow">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="5,5 19,5 19,19"/></svg>
+          </div>
+          <div class="proyecto-card__content">
+            <div class="proyecto-card__tag">Residencial</div>
+            <h3 class="proyecto-card__title">Vivienda Familiar</h3>
+            <p class="proyecto-card__desc">Todo para construir y refaccionar tu hogar</p>
+          </div>
+        </div>
+
+        <div class="proyecto-card fade-up delay-1">
+          <div class="proyecto-card__bg" style="background-image: url('../imagenes/banner-2.webp');"></div>
+          <div class="proyecto-card__overlay"></div>
+          <div class="proyecto-card__arrow">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="5,5 19,5 19,19"/></svg>
+          </div>
+          <div class="proyecto-card__content">
+            <div class="proyecto-card__tag">Comercial</div>
+            <h3 class="proyecto-card__title">Proyectos Comerciales</h3>
+            <p class="proyecto-card__desc">Soluciones a escala para grandes superficies</p>
+          </div>
+        </div>
+
+        <div class="proyecto-card fade-up delay-2">
+          <div class="proyecto-card__bg" style="background-image: url('../imagenes/Mesa-de-trabajo-2100.webp');"></div>
+          <div class="proyecto-card__overlay"></div>
+          <div class="proyecto-card__arrow">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="5,5 19,5 19,19"/></svg>
+          </div>
+          <div class="proyecto-card__content">
+            <div class="proyecto-card__tag">Industrial</div>
+            <h3 class="proyecto-card__title">Obra Industrial</h3>
+            <p class="proyecto-card__desc">Materiales de alta resistencia para entornos exigentes</p>
+          </div>
+        </div>
+
+        <div class="proyecto-card fade-up delay-3">
+          <div class="proyecto-card__bg" style="background-image: url('../imagenes/imagen_2023-06-09_114001724.webp');"></div>
+          <div class="proyecto-card__overlay"></div>
+          <div class="proyecto-card__arrow">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="5,5 19,5 19,19"/></svg>
+          </div>
+          <div class="proyecto-card__content">
+            <div class="proyecto-card__tag">Rural</div>
+            <h3 class="proyecto-card__title">Proyectos Rurales</h3>
+            <p class="proyecto-card__desc">Adaptados a cada terreno y condición climática</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       ESTADÍSTICAS
+  ══════════════════════════════ -->
+  <section class="estadisticas" id="estadisticas">
+    <div class="container">
+      <div class="estadisticas__grid">
+
+        <div class="stat-item fade-up">
+          <div class="stat-number">
+            <span class="accent">+</span><span class="counter" data-target="20">0</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-label">años de trayectoria</div>
+        </div>
+
+        <div class="stat-item fade-up delay-1">
+          <div class="stat-number">
+            <span class="accent">+</span><span class="counter" data-target="500">0</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-label">productos disponibles</div>
+        </div>
+
+        <div class="stat-item fade-up delay-2">
+          <div class="stat-number">
+            <span class="accent">+</span><span class="counter" data-target="10000" data-format="thousands">0</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-label">clientes satisfechos</div>
+        </div>
+
+        <div class="stat-item fade-up delay-3">
+          <div class="stat-number">
+            <span class="counter" data-target="100">0</span><span class="accent">%</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-label">respaldo de marca</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       POR QUÉ ELEGIRNOS
+  ══════════════════════════════ -->
+  <section class="por-que" id="por-que">
+    <div class="container">
+      <div class="por-que__header fade-up">
+        <span class="section-label">Nuestro diferencial</span>
+        <div class="sep"></div>
+        <h2 class="section-title">Por qué La Tejona</h2>
+      </div>
+
+      <div class="por-que__grid">
+
+        <!-- Asesoramiento Experto -->
+        <div class="feature-card fade-up delay-1">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M2 20h20"/>
+              <path d="M6 9v3h12V9C18 6 15.5 3 12 3S6 6 6 9z"/>
+              <line x1="12" y1="3" x2="12" y2="9"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Asesoramiento Experto</h3>
+          <p class="feature-card__text">Un especialista te guía en cada etapa de tu proyecto. Desde la elección del material hasta la instalación, contás con el respaldo de nuestro equipo técnico.</p>
+        </div>
+
+        <!-- Entrega a Obra -->
+        <div class="feature-card fade-up delay-2">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="1" y="3" width="15" height="13" rx="1"/>
+              <path d="M16 8h4l3 5v4h-7V8z"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Entrega a Obra</h3>
+          <p class="feature-card__text">Llevamos los materiales directo donde los necesitás. Coordinamos la logística para que tu obra no se detenga, con puntualidad y cuidado en cada entrega.</p>
+        </div>
+
+        <!-- Marcas Líderes -->
+        <div class="feature-card fade-up delay-3">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Marcas Líderes</h3>
+          <p class="feature-card__text">Solo trabajamos con proveedores verificados y marcas de reconocida trayectoria en el mercado boliviano. Calidad garantizada en cada producto que distribuimos.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       NOVEDADES
+  ══════════════════════════════ -->
+  <section class="novedades" id="novedades">
+    <div class="container">
+      <div class="novedades__header">
+        <div class="fade-up">
+          <span class="section-label">Blog</span>
+          <div class="sep sep--left" style="margin-top: 14px; margin-bottom: 18px;"></div>
+          <h2 class="section-title">Últimas novedades</h2>
+        </div>
+        <a href="#" class="btn btn--outline-dark fade-up delay-1">Ver todas las notas</a>
+      </div>
+
+      <div class="blog-grid">
+
+        <article class="blog-card fade-up">
+          <div class="blog-card__image">
+            <img src="../imagenes/TEJA-ESPANOLA-CERAMICA.webp" alt="Guía para elegir la teja" loading="lazy" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__cat">Techado</span>
+              <span class="blog-card__date">hace 2 días</span>
+            </div>
+            <h3 class="blog-card__title">Guía completa para elegir la teja correcta</h3>
+            <a href="#" class="blog-card__link">
+              Leer artículo
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up delay-1">
+          <div class="blog-card__image">
+            <img src="../imagenes/MAXIPLACA-2.webp" alt="Placa cementicia vs durlock" loading="lazy" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__cat">Construcción</span>
+              <span class="blog-card__date">hace 5 días</span>
+            </div>
+            <h3 class="blog-card__title">Placa cementicia vs durlock: diferencias clave</h3>
+            <a href="#" class="blog-card__link">
+              Leer artículo
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="blog-card fade-up delay-2">
+          <div class="blog-card__image">
+            <img src="../imagenes/FLEXITEJA-1.webp" alt="Proteger techo en lluvias" loading="lazy" />
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__cat">Mantenimiento</span>
+              <span class="blog-card__date">hace 1 semana</span>
+            </div>
+            <h3 class="blog-card__title">Cómo proteger tu techo en temporada de lluvias</h3>
+            <a href="#" class="blog-card__link">
+              Leer artículo
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       FOOTER
+  ══════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Brand -->
+        <div>
+          <img src="../imagenes/TEJONA-LOGOS-E-IMAGENES-500X500.png" alt="La Tejona" class="footer__brand-logo" />
+          <p class="footer__brand-desc">
+            Distribuidora líder de materiales de construcción en Bolivia. Conectamos proyectos con calidad, desde La Paz hasta cada rincón del país.
+          </p>
+          <div class="footer__socials">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2.5"/></svg>
+            </a>
+            <a href="https://wa.me/59121234567" class="social-icon" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contacto -->
+        <div>
+          <div class="footer__col-title">Contacto</div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>La Paz, Bolivia</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.82 19.79 19.79 0 012 3.18 2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>+591 2 1234567</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@latejona.com.bo</span>
+          </div>
+        </div>
+
+        <!-- Productos -->
+        <div>
+          <div class="footer__col-title">Productos</div>
+          <ul class="footer__links">
+            <li><a href="#">Tejas Españolas</a></li>
+            <li><a href="#">Flexitejas</a></li>
+            <li><a href="#">Placas Cementicia</a></li>
+            <li><a href="#">Pinturas Ribepar</a></li>
+            <li><a href="#">Ver catálogo completo</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+          <div class="footer__col-title">Empresa</div>
+          <ul class="footer__links">
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Novedades</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Términos de uso</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2024 La Tejona. Todos los derechos reservados.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Contacto</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════
+       WHATSAPP FLOTANTE
+  ══════════════════════════════ -->
+  <a href="https://wa.me/59121234567" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <div class="whatsapp-fab__tooltip">¿Necesitás una cotización?</div>
+    <div class="whatsapp-fab__btn">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.992-1.404A9.954 9.954 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+      </svg>
+    </div>
+  </a>
+
+
+  <!-- ══════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════ -->
+  <script>
+    /* ── Navbar scroll behavior ─────────────────────── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('navbar--scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ── Hamburger toggle ───────────────────────────── */
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobile-nav').classList.toggle('open');
+    });
+
+    /* ── Fade-up Intersection Observer ─────────────── */
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+    // Trigger hero fade-up immediately (it's above fold)
+    document.querySelectorAll('.hero .fade-up').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 200);
+    });
+
+    /* ── Product Slider ─────────────────────────────── */
+    const track      = document.getElementById('sliderTrack');
+    const slides     = Array.from(track.querySelectorAll('.slide-card'));
+    const prevBtn    = document.getElementById('prevBtn');
+    const nextBtn    = document.getElementById('nextBtn');
+    const dotsWrap   = document.getElementById('sliderDots');
+    let current      = 0;
+    let autoTimer;
+
+    // Build indicator dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.querySelectorAll('.slider-dot'));
+
+    function goTo(index) {
+      current = ((index % slides.length) + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    function startAuto() {
+      autoTimer = setInterval(() => goTo(current + 1), 6000);
+    }
+    function resetAuto() {
+      clearInterval(autoTimer);
+      startAuto();
+    }
+
+    prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+    startAuto();
+
+    // Touch swipe
+    let tx = 0;
+    track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => {
+      const dx = tx - e.changedTouches[0].clientX;
+      if (Math.abs(dx) > 50) { goTo(current + (dx > 0 ? 1 : -1)); resetAuto(); }
+    });
+
+    /* ── Animated counters ──────────────────────────── */
+    function formatCount(n, fmt) {
+      if (fmt === 'thousands') {
+        if (n >= 1000) return (n / 1000).toFixed(0) + '.000';
+        return n.toString();
+      }
+      return n.toString();
+    }
+
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el     = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        const fmt    = el.dataset.format || '';
+        const dur    = 1800;
+        const t0     = performance.now();
+
+        (function tick(now) {
+          const p   = Math.min((now - t0) / dur, 1);
+          const ease = 1 - Math.pow(1 - p, 3);      // ease-out cubic
+          el.textContent = formatCount(Math.round(ease * target), fmt);
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = formatCount(target, fmt);
+        })(performance.now());
+
+        counterObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+  </script>
+
+</body>
+</html>
