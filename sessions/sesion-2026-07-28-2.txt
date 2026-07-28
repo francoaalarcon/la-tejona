@@ -1,0 +1,59 @@
+════════════════════════════════════════════════
+LA TEJONA — REPORTE DE SESIÓN
+Fecha: 28 de julio de 2026 (sesión 2)
+════════════════════════════════════════════════
+
+RELEASE GENERADO
+  Versión: Sin release en esta sesión
+  Archivo: N/A
+
+────────────────────────────────────────────────
+RESUMEN EJECUTIVO
+────────────────────────────────────────────────
+Sesión de corrección visual. Se detectó que ambas landings usaban azul (#0089e4)
+como color principal en lugar del rojo/negro que corresponde a la identidad de
+marca de La Tejona. Se corrigió la paleta completa en ambos archivos y se
+reorganizaron los assets para que cada versión sea autocontenida.
+
+────────────────────────────────────────────────
+CAMBIOS IMPLEMENTADOS
+────────────────────────────────────────────────
+
+  DISEÑO / CSS
+  ✓ version-1/index.html — color primario cambiado de #0089e4 a #cc0000 (rojo)
+  ✓ version-1/index.html — color oscuro cambiado de #192730 a #1a1a1a (negro)
+  ✓ version-2/index.html — mismo reemplazo de paleta rojo/negro
+  ✓ Hover states: #0070c0 → #a80000 en ambas versiones
+  ✓ Variables CSS renombradas: --blue → --red, --navy → --dark
+
+  ASSETS / ESTRUCTURA
+  ✓ version-1/assets/ — carpeta propia con 10 imágenes del proyecto
+  ✓ version-2/assets/ — carpeta propia con 9 imágenes del proyecto
+  ✓ Rutas de imágenes: ../imagenes/ → assets/ (autocontenidas)
+
+────────────────────────────────────────────────
+ARCHIVOS MODIFICADOS
+────────────────────────────────────────────────
+  version-1/index.html
+  version-2/index.html
+  version-1/assets/ (10 archivos copiados)
+  version-2/assets/ (9 archivos copiados)
+
+────────────────────────────────────────────────
+CONFIGURACIÓN PENDIENTE (lado cliente)
+────────────────────────────────────────────────
+  □ Revisar ambas versiones con la paleta rojo/negro y dar feedback
+  □ Elegir cuál versión se convierte a tema WordPress
+  □ Confirmar datos reales de contacto (tel, email, dirección en Bolivia)
+  □ Confirmar número de WhatsApp real
+  □ Proveer textos reales (testimonios, nosotros, etc.)
+
+────────────────────────────────────────────────
+PRÓXIMA SESIÓN — SUGERENCIAS
+────────────────────────────────────────────────
+  • Aplicar feedback del cliente sobre las versiones corregidas
+  • Ajustes finos de diseño (espaciados, tipografía, etc.) si se solicitan
+  • Una vez aprobada la versión, iniciar conversión a tema WordPress
+  • Definir estructura de navegación y subpáginas del sitio
+
+════════════════════════════════════════════════

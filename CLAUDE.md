@@ -3,7 +3,7 @@
 ## Estado actual
 **Versión:** v0.1.0  
 **Fase:** Diseño / Landing pages HTML  
-**Última sesión:** 2026-07-28  
+**Última sesión:** 2026-07-28 (sesión 2)  
 **Repo:** https://github.com/francoaalarcon/la-tejona  
 **Directorio local:** /home/franco/tejona  
 
@@ -30,18 +30,18 @@ la-tejona/
 
 ## Sistema de diseño
 
-### Paleta de colores (extraída de latejona.com)
+### Paleta de colores — identidad de marca La Tejona
 | Rol | Hex |
 |---|---|
-| Azul principal (CTA, links) | `#0089e4` |
-| Navy oscuro (navbar, footer) | `#192730` |
-| Negro (texto) | `#000000` |
+| Rojo principal (CTA, links, acento) | `#cc0000` |
+| Rojo oscuro (hover) | `#a80000` |
+| Negro (navbar, footer, overlays) | `#1a1a1a` |
+| Negro texto | `#000000` |
 | Gris claro (fondo página) | `#f6f6f8` |
 | Gris suave (secciones alt.) | `#ecedef` |
-| Off-white (cards) | `#FBFCFF` |
 | Blanco | `#ffffff` |
 | Gris bordes | `#dddddd` |
-| Dorado/acento v1 | `#e8a020` |
+| Dorado/acento v1 stats | `#e8a020` |
 
 ### Tipografía
 - **Version 1:** Poppins (headings 700/600) + Inter (body 400/500)
@@ -70,6 +70,19 @@ la-tejona/
 ---
 
 ## Historial de sesiones
+
+### 2026-07-28 (sesión 2)
+**Release:** sin release  
+**Resumen:** Corrección de paleta — rojo/negro de marca reemplaza azul/navy; assets integrados por versión.  
+**Cambios:**
+- `version-1/index.html` y `version-2/index.html` — paleta corregida: `#0089e4` → `#cc0000` (rojo), `#192730` → `#1a1a1a` (negro)
+- `version-1/assets/` y `version-2/assets/` — cada versión ahora tiene su propia carpeta de imágenes autocontenida
+- Rutas de imágenes actualizadas de `../imagenes/` a `assets/` local
+
+**Pendientes:**
+- Revisión visual del cliente con la paleta rojo/negro correcta
+- Ajustes adicionales de diseño según feedback
+- Definir cuál versión se convierte a WordPress
 
 ### 2026-07-28
 **Release:** v0.1.0  
