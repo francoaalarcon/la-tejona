@@ -1,0 +1,107 @@
+════════════════════════════════════════════════
+LA TEJONA — REPORTE DE SESIÓN
+Fecha: 12 de agosto de 2026
+════════════════════════════════════════════════
+
+RELEASE GENERADO
+  Versión: Sin release en esta sesión
+  Archivo: N/A
+
+────────────────────────────────────────────────
+RESUMEN EJECUTIVO
+────────────────────────────────────────────────
+Sesión enfocada en construir el catálogo completo de productos Duralit (50 SKUs)
+con vista tipo tienda WooCommerce y página individual dinámica por producto.
+Se identificaron y copiaron imágenes específicas por color desde la carpeta de
+assets del cliente, y se corrigieron todos los enlaces de navegación y footer
+en las 12 páginas del sitio.
+
+────────────────────────────────────────────────
+CAMBIOS IMPLEMENTADOS
+────────────────────────────────────────────────
+
+  NUEVAS PÁGINAS
+  ✓ version-3/catalogo.html — Tienda WooCommerce-style: 50 productos en grid,
+    sidebar con filtros por categoría (9), color (3) y búsqueda en vivo.
+    Filtrado JS con lógica AND. Contador "Mostrando X de 50". Links a producto.html
+  ✓ version-3/producto.html — Página individual dinámica: lee ?sku=XXXX de la URL,
+    base de datos JS (const PRODUCTS) con los 50 productos, galería de imagen con
+    variantes de color, tabla de specs, tabs Descripción/Especificaciones/Instalación,
+    4 productos relacionados. Estado "no encontrado" si SKU inválido.
+  ✓ version-3/producto-single.html — Template estático de referencia (TD244 Teja
+    Duralit 2.44×1.10 5mm) como guía visual para la conversión a WordPress.
+
+  ASSETS / IMÁGENES
+  ✓ TEJA-NATURAL.webp — Teja Duralit ondulada natural (ISO 9001, logo oficial)
+  ✓ TEJA-ROJA.png — Teja Duralit roja (Flexiteja branded)
+  ✓ TEJA-LADRILLO.png — Teja Duralit ladrillo/naranja (versiones -5ORO)
+  ✓ ROJO-CARMESI.png — Teja Rojo de Fábrica carmesí puro (versiones ROFD)
+  ✓ TEJA-ESPANOLA-LADRILLO.webp — Teja Española ladrillo
+  ✓ MAXIPLACA-CEMENTO.png — Placas grises planas (MuroLit)
+  ✓ PLACA-CEMENTICIA.jpg — MaxiPlaca fibrocemento gris
+  ✓ TANQUE-NEGRO.png — Tanque agua negro Duralit (1000lt / 1200lt)
+  ✓ TANQUE-SEPTICO.webp — Tanque séptico negro con tuberías (1000lt)
+
+  JAVASCRIPT / LÓGICA
+  ✓ const PRODUCTS: base de datos completa de 50 SKUs con nombre, categoría,
+    color, imagen, specs técnicas, descripción y 4 relacionados por producto
+  ✓ const PRODUCT_IMAGES: mapa SKU → imagen específica (override por color)
+  ✓ const CATALOG_IMAGES: mismo mapa aplicado en las tarjetas del catálogo
+  ✓ Filtros sidebar catálogo: AND-logic entre categoría + color + búsqueda
+  ✓ URL params: catalogo.html?cat=xxx pre-filtra al cargar
+  ✓ Cards clickeables: imagen + nombre navegan a producto.html?sku=XXX
+
+  CORRECCIÓN DE ENLACES (11 archivos)
+  ✓ Nav "Productos" → catalogo.html en todos los archivos
+  ✓ index.html nav: anclas internas (#proyectos, #ventajas, #novedades) →
+    páginas reales (proyectos.html, nosotros.html, novedades.html)
+  ✓ index.html hero CTA "#categorias" → catalogo.html
+  ✓ index.html blog: "Ver todas las notas" y 3 cards → novedades.html
+  ✓ Footer columna "Productos" en todas las páginas → catalogo.html?cat=xxx
+    (teja-espanola, teja-duralit, maxiplaca, tanque, masilla)
+
+────────────────────────────────────────────────
+ARCHIVOS MODIFICADOS
+────────────────────────────────────────────────
+  version-3/catalogo.html          (NUEVO — 1.800+ líneas)
+  version-3/producto.html          (NUEVO — 1.600+ líneas)
+  version-3/producto-single.html   (NUEVO — template estático)
+  version-3/assets/TEJA-NATURAL.webp
+  version-3/assets/TEJA-ROJA.png
+  version-3/assets/TEJA-LADRILLO.png
+  version-3/assets/ROJO-CARMESI.png
+  version-3/assets/TEJA-ESPANOLA-LADRILLO.webp
+  version-3/assets/MAXIPLACA-CEMENTO.png
+  version-3/assets/PLACA-CEMENTICIA.jpg
+  version-3/assets/TANQUE-NEGRO.png
+  version-3/assets/TANQUE-SEPTICO.webp
+  version-3/index.html             (nav + blog links corregidos)
+  version-3/productos.html         (nav + footer corregidos)
+  version-3/nosotros.html          (nav + footer corregidos)
+  version-3/proyectos.html         (nav + footer corregidos)
+  version-3/novedades.html         (nav + footer corregidos)
+  version-3/contacto.html          (nav + footer corregidos)
+  version-3/privacidad.html        (nav + footer corregidos)
+  version-3/cookies.html           (nav + footer corregidos)
+  version-3/terminos.html          (nav + footer corregidos)
+
+────────────────────────────────────────────────
+PRODUCTOS SIN IMAGEN REAL (usar placeholder SVG)
+────────────────────────────────────────────────
+  □ Cumbreras (no existen fotos específicas en assets del cliente)
+  □ Pernos Tirafondo / Gancho J / Autoperforante
+  □ Masillas Duralit y Cemento Cola
+  □ Servicio de Transporte
+  → Solución actual: SVG placeholder con ícono por categoría
+
+────────────────────────────────────────────────
+PRÓXIMA SESIÓN — SUGERENCIAS
+────────────────────────────────────────────────
+  • Revisión del cliente del catálogo completo (catalogo.html + producto.html)
+  • Solicitar al cliente fotos de cumbreras, masillas y pernos
+  • Definir decisión: ¿convertir version-3 a tema WordPress?
+  • Si se aprueba WordPress: iniciar conversión con html-to-wp-theme skill
+  • Ajustar número de teléfono real (actualmente placeholder +591 2 123-4567)
+  • Revisar si agregar filtro por marca (Duralit / Ribepar) al sidebar del catálogo
+
+════════════════════════════════════════════════

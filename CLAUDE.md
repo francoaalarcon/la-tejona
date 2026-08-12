@@ -2,7 +2,7 @@
 
 ## Estado actual
 **Versión:** v0.1.0  
-**Fase:** Diseño / Prototipo HTML completo (version-3 con 9 páginas)  
+**Fase:** Diseño / Prototipo HTML completo (version-3 con 12 páginas + catálogo dinámico)  
 **Última sesión:** 2026-08-12  
 **Repo:** https://github.com/francoaalarcon/la-tejona  
 **Directorio local:** /home/franco/tejona  
@@ -22,14 +22,17 @@ la-tejona/
 ├── version-3/          # ★ VERSIÓN ACTIVA — visual v1 + estructura v2
 │   ├── index.html      # Landing principal con carousel hero
 │   ├── nosotros.html
-│   ├── productos.html
+│   ├── productos.html  # Overview de categorías (4 destacados)
+│   ├── catalogo.html   # ★ Tienda estilo WooCommerce — 50 productos con filtros
+│   ├── producto.html   # ★ Página individual dinámica (?sku=XXXX)
+│   ├── producto-single.html  # Template estático de referencia (TD244)
 │   ├── proyectos.html
 │   ├── novedades.html
 │   ├── contacto.html
 │   ├── privacidad.html
 │   ├── cookies.html
 │   ├── terminos.html
-│   └── assets/
+│   └── assets/         # 19 imágenes (9 nuevas específicas por producto)
 ├── imagenes/           # Carpeta original de assets del cliente
 ├── sessions/           # Reportes de sesión
 ├── d1.png              # Diseño de referencia v1 (EQUIP)
@@ -81,6 +84,24 @@ la-tejona/
 ---
 
 ## Historial de sesiones
+
+### 2026-08-12 (sesión 2)
+**Release:** sin release  
+**Resumen:** Catálogo Duralit completo — tienda tipo WooCommerce con 50 productos, página individual dinámica por SKU y corrección total de enlaces en todas las páginas.  
+**Cambios:**
+- `version-3/catalogo.html` — página de catálogo estilo tienda con 50 productos Duralit, sidebar con filtros de categoría/color/búsqueda, grid responsivo, links a producto individual
+- `version-3/producto.html` — página individual dinámica: lee `?sku=XXXX`, base de datos JS con 50 productos (specs, descripción, relacionados, galería de variantes)
+- `version-3/producto-single.html` — template estático de referencia (ejemplo TD244)
+- `version-3/assets/` — 9 imágenes específicas por color/categoría: TEJA-NATURAL, TEJA-ROJA, TEJA-LADRILLO, ROJO-CARMESI, TEJA-ESPANOLA-LADRILLO, MAXIPLACA-CEMENTO, PLACA-CEMENTICIA, TANQUE-NEGRO, TANQUE-SEPTICO
+- Todos los navs (11 archivos) — "Productos" ahora apunta a `catalogo.html`; index.html usa páginas reales en vez de anclas internas
+- Footer columna "Productos" (11 archivos) — links a `catalogo.html?cat=xxx` por categoría (teja-espanola, teja-duralit, maxiplaca, tanque, masilla)
+- `index.html` — blog cards y "Ver todas las notas" apuntan a `novedades.html`
+
+**Pendientes:**
+- Revisión final del cliente de la version-3 completa (catálogo incluido)
+- Agregar imágenes reales de cumbreras (no existen en imagenes/)
+- Agregar imágenes de masillas/pernos cuando el cliente las provea
+- Decisión: convertir version-3 a tema WordPress
 
 ### 2026-08-12
 **Release:** sin release  
