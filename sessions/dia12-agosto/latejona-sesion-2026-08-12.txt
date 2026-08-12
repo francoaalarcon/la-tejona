@@ -1,0 +1,88 @@
+════════════════════════════════════════════════
+LA TEJONA — REPORTE DE SESIÓN
+Fecha: 12 de agosto de 2026
+════════════════════════════════════════════════
+
+RELEASE GENERADO
+  Versión: Sin release en esta sesión
+  Archivo: N/A
+
+────────────────────────────────────────────────
+RESUMEN EJECUTIVO
+────────────────────────────────────────────────
+El cliente aprobó el estilo visual de la versión 1 (EQUIP) pero solicitó la
+estructura de contenido de la versión 2. Se construyó la versión 3 como fusión
+definitiva: visual v1 + estructura v2, con carousel hero dinámico. Luego se
+completó el sitio con 5 subpáginas funcionales, 3 páginas legales y el footer
+actualizado con todos los enlaces en las 9 páginas.
+
+────────────────────────────────────────────────
+CAMBIOS IMPLEMENTADOS
+────────────────────────────────────────────────
+
+  NUEVA VERSIÓN — version-3/ (prototipo definitivo)
+  ✓ index.html — Landing fusionada v1+v2 con carousel hero dinámico (3 slides,
+    flechas prev/next, dots de navegación, swipe táctil, auto-avance 5500ms)
+  ✓ Secciones mantenidas: Proceso simple (¿Cómo funciona?), Categorías disponibles,
+    ¿Por qué elegirnos? (ventaja-cards con hover rojo→dorado)
+  ✓ Stats animados con contadores requestAnimationFrame
+  ✓ Marquee de marcas (CSS keyframes)
+  ✓ WhatsApp FAB fijo bottom-right
+
+  SUBPÁGINAS
+  ✓ nosotros.html — Historia (grid 60/40), Misión/Visión (2 cards), Valores,
+    Stats animados, CTA doble
+  ✓ productos.html — Grid de 6 categorías + 4 fichas detalladas con checkmarks,
+    marcas marquee, CTA rojo
+  ✓ proyectos.html — 4 tipos de proyecto (cards 2×2 con overlay hover),
+    proceso en 4 pasos (dark bg, conectores dorados), CTA
+  ✓ novedades.html — Artículo destacado (grid 2 col), 9 cards de blog (3×3),
+    newsletter CTA dark + botones sociales
+  ✓ contacto.html — Formulario 6 campos con validación JS, columna info
+    (ubicación/teléfono/email + bloque WhatsApp), mapa placeholder, 3 sucursales
+    (dark bg)
+
+  PÁGINAS LEGALES
+  ✓ privacidad.html — Política de privacidad, layout 2 columnas (TOC sidebar
+    sticky + cuerpo legal), 11 secciones incluyendo tabla de finalidades
+  ✓ cookies.html — Política de cookies, tabla con badges por tipo de cookie
+    (necesarias/analíticas/marketing), 8 secciones
+  ✓ terminos.html — Términos y condiciones, 13 secciones, jurisdicción La Paz
+    Bolivia, variante legal-highlight--gold
+
+  FOOTER (todas las páginas)
+  ✓ Columna "Empresa" actualizada con los 7 enlaces completos (incluyendo legales)
+  ✓ Footer-bottom-links: Privacidad · Cookies · Términos · Contacto
+
+────────────────────────────────────────────────
+ARCHIVOS MODIFICADOS / CREADOS
+────────────────────────────────────────────────
+  version-3/index.html          (modificado — carousel + estructura v3)
+  version-3/nosotros.html       (creado)
+  version-3/productos.html      (creado)
+  version-3/proyectos.html      (creado)
+  version-3/novedades.html      (creado)
+  version-3/contacto.html       (creado)
+  version-3/privacidad.html     (creado)
+  version-3/cookies.html        (creado)
+  version-3/terminos.html       (creado)
+
+────────────────────────────────────────────────
+CONFIGURACIÓN PENDIENTE (lado cliente)
+────────────────────────────────────────────────
+  □ Revisar versión 3 completa en el navegador
+  □ Confirmar si la versión 3 es la aprobada para convertir a WordPress
+  □ Proveer textos reales para "Nosotros" (historia de la empresa)
+  □ Proveer textos reales para proyectos y blog (actualmente son placeholders)
+  □ Confirmar datos de contacto y sucursales (direcciones, teléfonos, emails)
+
+────────────────────────────────────────────────
+PRÓXIMA SESIÓN — SUGERENCIAS
+────────────────────────────────────────────────
+  • Una vez aprobada la version-3, iniciar conversión a tema WordPress
+  • Crear estructura base del tema: functions.php, style.css, header.php, footer.php
+  • Implementar WooCommerce en modo catálogo (sin transacciones)
+  • Definir la página de Marcas (no existe aún en version-3)
+  • Ajustar textos placeholder con contenido real del cliente
+
+════════════════════════════════════════════════

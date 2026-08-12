@@ -2,8 +2,8 @@
 
 ## Estado actual
 **Versión:** v0.1.0  
-**Fase:** Diseño / Landing pages HTML  
-**Última sesión:** 2026-07-28 (sesión 2)  
+**Fase:** Diseño / Prototipo HTML completo (version-3 con 9 páginas)  
+**Última sesión:** 2026-08-12  
 **Repo:** https://github.com/francoaalarcon/la-tejona  
 **Directorio local:** /home/franco/tejona  
 
@@ -15,10 +15,21 @@
 la-tejona/
 ├── version-1/          # Estilo EQUIP — marketplace B2B oscuro
 │   ├── index.html
-│   └── assets/         # Imágenes propias de esta versión
+│   └── assets/
 ├── version-2/          # Estilo Pacasmayo — institucional limpio
 │   ├── index.html
-│   └── assets/         # Imágenes propias de esta versión
+│   └── assets/
+├── version-3/          # ★ VERSIÓN ACTIVA — visual v1 + estructura v2
+│   ├── index.html      # Landing principal con carousel hero
+│   ├── nosotros.html
+│   ├── productos.html
+│   ├── proyectos.html
+│   ├── novedades.html
+│   ├── contacto.html
+│   ├── privacidad.html
+│   ├── cookies.html
+│   ├── terminos.html
+│   └── assets/
 ├── imagenes/           # Carpeta original de assets del cliente
 ├── sessions/           # Reportes de sesión
 ├── d1.png              # Diseño de referencia v1 (EQUIP)
@@ -70,6 +81,25 @@ la-tejona/
 ---
 
 ## Historial de sesiones
+
+### 2026-08-12
+**Release:** sin release  
+**Resumen:** Versión 3 completa — prototipo HTML con 9 páginas (landing + subpáginas + legales) aprobado visualmente por el cliente.  
+**Cambios:**
+- `version-3/index.html` — landing principal, visual v1 + estructura v2, carousel hero 3 slides, stats animados, marcas marquee, secciones Proceso/Categorías/Diferencial
+- `version-3/nosotros.html` — página Historia, Misión/Visión, Valores, Stats
+- `version-3/productos.html` — grid de categorías + 4 fichas de producto detalladas + marcas
+- `version-3/proyectos.html` — 4 tipos de proyecto, proceso en 4 pasos, CTA
+- `version-3/novedades.html` — artículo destacado + 9 cards de blog + newsletter
+- `version-3/contacto.html` — formulario con validación JS, sucursales, mapa placeholder
+- `version-3/privacidad.html` — Política de privacidad con layout 2 columnas (TOC sidebar + body)
+- `version-3/cookies.html` — Política de cookies con tabla de cookies tipificadas
+- `version-3/terminos.html` — Términos y condiciones (13 secciones, jurisdicción La Paz, Bolivia)
+- Footer de las 9 páginas — actualizado con enlaces completos (Empresa + links legales en footer-bottom)
+
+**Pendientes:**
+- Revisión final del cliente de la versión 3 completa
+- Decisión: convertir version-3 a tema WordPress
 
 ### 2026-07-28 (sesión 2)
 **Release:** sin release  
