@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productos — La Tejona | Materiales de Construcción en Bolivia</title>
+  <meta name="description" content="Más de 500 productos disponibles. Techado, construcción, acabados y almacenaje con las mejores marcas. La Tejona, La Paz, Bolivia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #222;
+      background: #f6f6f8;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Design tokens ─────────────────────────────────────────── */
+    :root {
+      --red:       #cc0000;
+      --red-hover: #a80000;
+      --dark:      #1a1a1a;
+      --black:     #000000;
+      --bg:        #f6f6f8;
+      --bg-alt:    #ecedef;
+      --white:     #ffffff;
+      --border:    #dddddd;
+      --gold:      #e8a020;
+      --font-head: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius:    12px;
+      --shadow:    0 4px 24px rgba(0,0,0,0.10);
+      --shadow-hover: 0 8px 36px rgba(204,0,0,0.18);
+      --transition: 0.3s ease;
+    }
+
+    /* ─── Utilities ─────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: rgba(204,0,0,0.10);
+      color: var(--red);
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--red); }
+
+    .section-sub {
+      font-size: 1rem;
+      color: #555;
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .divider {
+      width: 56px;
+      height: 4px;
+      background: linear-gradient(to right, var(--red), var(--gold));
+      border-radius: 4px;
+      margin: 14px 0 28px;
+    }
+    .divider-center { margin: 14px auto 28px; }
+
+    /* ─── Buttons ───────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-family: var(--font-head);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--red); color: #fff; border-color: var(--red); }
+    .btn-primary:hover { background: var(--red-hover); border-color: var(--red-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(204,0,0,0.30); }
+    .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.70); }
+    .btn-outline:hover { background: #fff; color: var(--dark); }
+    .btn-outline-dark { background: transparent; color: var(--dark); border-color: var(--dark); }
+    .btn-outline-dark:hover { background: var(--dark); color: #fff; }
+    .btn-outline-red { background: transparent; color: var(--red); border-color: var(--red); }
+    .btn-outline-red:hover { background: var(--red); color: #fff; }
+    .btn-gold { background: var(--gold); color: #fff; border-color: var(--gold); }
+    .btn-gold:hover { background: #c98800; border-color: #c98800; transform: translateY(-2px); }
+    .btn-sm { padding: 9px 20px; font-size: 0.82rem; }
+
+    /* ─── Fade-in animation ─────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.10s; }
+    .fade-in-delay-2 { transition-delay: 0.20s; }
+    .fade-in-delay-3 { transition-delay: 0.30s; }
+    .fade-in-delay-4 { transition-delay: 0.40s; }
+    .fade-in-delay-5 { transition-delay: 0.50s; }
+
+    /* ══════════════════════════════════════════════════════════════
+       NAVBAR — siempre dark en subpáginas
+    ══════════════════════════════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      background: var(--dark);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+      padding: 12px 0;
+      transition: padding var(--transition);
+    }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .nav-logo img {
+      max-height: 50px;
+      width: auto;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.88);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: #fff; background: rgba(255,255,255,0.12); }
+    .nav-links a.active { color: var(--gold); }
+
+    .nav-cta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .nav-tel {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: #fff; border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--dark);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a {
+      color: #fff;
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 600;
+      padding: 12px 24px;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links, .nav-tel { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       PAGE HERO
+    ══════════════════════════════════════════════════════════════ */
+    #page-hero {
+      position: relative;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      background-image: url('assets/TEJA-ESPANOLA-CERAMICA.webp');
+      background-size: cover;
+      background-position: center;
+      padding-top: 74px;
+    }
+    #page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(26,26,26,0.82);
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,160,32,0.16);
+      border: 1px solid rgba(232,160,32,0.48);
+      color: var(--gold);
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .page-hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .page-hero-sub {
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      color: rgba(255,255,255,0.82);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+    .page-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ══════════════════════════════════════════════════════════════
+       FILTER TABS
+    ══════════════════════════════════════════════════════════════ */
+    #filtro {
+      background: #fff;
+      padding: 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 74px;
+      z-index: 50;
+    }
+    .filter-tabs {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .filter-tabs::-webkit-scrollbar { display: none; }
+    .filter-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 18px 22px;
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #666;
+      cursor: pointer;
+      border: none;
+      background: none;
+      border-bottom: 3px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+      position: relative;
+      bottom: -1px;
+    }
+    .filter-tab:hover { color: var(--red); }
+    .filter-tab.active {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+    .filter-tab .tab-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px; height: 20px;
+      background: rgba(204,0,0,0.10);
+      color: var(--red);
+      font-size: 0.68rem;
+      font-weight: 700;
+      border-radius: 50%;
+    }
+    .filter-tab.active .tab-count {
+      background: var(--red);
+      color: #fff;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       CATEGORÍAS GRID
+    ══════════════════════════════════════════════════════════════ */
+    #categorias {
+      background: #fff;
+      padding: 60px 0 100px;
+    }
+    .cat-section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .cat-section-header .section-sub {
+      margin: 0 auto;
+    }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 22px;
+    }
+    .cat-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: var(--shadow);
+    }
+    .cat-card:hover { transform: scale(1.04); box-shadow: 0 16px 48px rgba(0,0,0,0.22); }
+    .cat-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .cat-card:hover img { transform: scale(1.08); }
+    .cat-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.25) 55%, transparent 100%);
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px 22px;
+      transition: var(--transition);
+    }
+    .cat-card:hover .cat-overlay {
+      background: linear-gradient(to top, rgba(204,0,0,0.85) 0%, rgba(26,26,26,0.40) 55%, transparent 100%);
+    }
+    .cat-name {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+    .cat-count { font-size: 0.8rem; color: rgba(255,255,255,0.70); }
+    .cat-arrow {
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      opacity: 0;
+      transform: translate(6px,-6px);
+      transition: var(--transition);
+    }
+    .cat-card:hover .cat-arrow { opacity: 1; transform: translate(0,0); }
+
+    .badge-top {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 4px;
+      margin-left: 7px;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 900px) { .cat-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px) { .cat-grid { grid-template-columns: 1fr; } .cat-card { aspect-ratio: 16/9; } }
+
+    /* ══════════════════════════════════════════════════════════════
+       PRODUCTOS DESTACADOS
+    ══════════════════════════════════════════════════════════════ */
+    #destacados {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+    .destacados-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .destacados-header .section-sub { margin: 0 auto; }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 28px;
+    }
+    @media (max-width: 768px) { .products-grid { grid-template-columns: 1fr; } }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .product-card__image {
+      height: 240px;
+      overflow: hidden;
+    }
+    .product-card__image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-card__image img { transform: scale(1.05); }
+    .product-card__body {
+      padding: 28px 28px 32px;
+    }
+    .product-badge {
+      display: inline-block;
+      background: rgba(204,0,0,0.10);
+      color: var(--red);
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+    .product-card__title {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .product-card__desc {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.68;
+      margin-bottom: 18px;
+    }
+    .product-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .product-feature {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.88rem;
+      color: #555;
+    }
+    .feature-check {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(204,0,0,0.10);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--red);
+    }
+    .feature-check svg { width: 10px; height: 10px; }
+
+    /* ══════════════════════════════════════════════════════════════
+       MARCAS SECTION (dark bg)
+    ══════════════════════════════════════════════════════════════ */
+    #marcas-prod {
+      background: var(--dark);
+      padding: 80px 0;
+      overflow: hidden;
+    }
+    .marcas-prod-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .marcas-prod-header .section-title { color: #fff; }
+    .marcas-prod-header .section-sub { margin: 0 auto; color: rgba(255,255,255,0.55); }
+
+    .marquee-wrapper { position: relative; overflow: hidden; }
+    .marquee-wrapper::before,
+    .marquee-wrapper::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0;
+      width: 120px; z-index: 2;
+    }
+    .marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--dark), transparent); }
+    .marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--dark), transparent); }
+    .marquee-track {
+      display: flex; gap: 0;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marca-item {
+      display: flex; align-items: center; justify-content: center;
+      padding: 18px 48px;
+      flex-shrink: 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      filter: grayscale(1) opacity(0.4);
+      transition: var(--transition);
+    }
+    .marca-item:hover { filter: grayscale(0) opacity(1); }
+    .marca-item img { height: 48px; width: auto; object-fit: contain; }
+    .marca-text {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       CTA FINAL
+    ══════════════════════════════════════════════════════════════ */
+    #cta-final {
+      background: var(--red);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .cta-final-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .cta-final-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .cta-final-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════════ */
+    #footer {
+      background: #0e1c24;
+      color: rgba(255,255,255,0.75);
+      padding: 80px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.4fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+
+    .footer-brand img {
+      max-height: 54px; width: auto;
+      margin-bottom: 18px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .footer-desc {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.50);
+      max-width: 280px;
+      margin-bottom: 24px;
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.65);
+      transition: var(--transition);
+    }
+    .social-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    .social-btn svg { width: 16px; height: 16px; }
+
+    .footer-col-title {
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.52);
+      transition: var(--transition);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .footer-links a::before { content: '›'; color: var(--red); font-size: 1rem; }
+    .footer-links a:hover { color: #fff; transform: translateX(4px); }
+    .footer-contact-item {
+      display: flex; align-items: flex-start;
+      gap: 11px; margin-bottom: 14px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.58);
+    }
+    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--red); }
+    .footer-contact-item a { color: rgba(255,255,255,0.58); }
+    .footer-contact-item a:hover { color: #fff; }
+    .footer-bottom {
+      padding: 24px 0;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      transition: color var(--transition);
+    }
+    .footer-bottom-links a:hover { color: rgba(255,255,255,0.65); }
+    @media (max-width: 480px) { .footer-bottom { flex-direction: column; text-align: center; } }
+
+    /* ══════════════════════════════════════════════════════════════
+       WHATSAPP FLOTANTE
+    ══════════════════════════════════════════════════════════════ */
+    #wa-float {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      z-index: 900;
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 10px;
+    }
+    .wa-tooltip {
+      background: var(--dark);
+      color: #fff;
+      font-family: var(--font-head);
+      font-size: 0.80rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: var(--transition);
+      pointer-events: none;
+      box-shadow: var(--shadow);
+    }
+    #wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+    .wa-btn {
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.42);
+      transition: var(--transition);
+      animation: wa-pulse 2.5s ease infinite;
+    }
+    .wa-btn:hover { background: #20b858; transform: scale(1.08); animation: none; }
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.42); }
+      50% { box-shadow: 0 6px 36px rgba(37,211,102,0.72), 0 0 0 12px rgba(37,211,102,0.08); }
+    }
+    @media (max-width: 768px) {
+      #wa-float { bottom: 20px; right: 20px; }
+      .wa-btn { width: 52px; height: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     MOBILE NAV OVERLAY
+══════════════════════════════ -->
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <a href="index.html" onclick="closeMobileNav()">Inicio</a>
+  <a href="index.html#como-funciona" onclick="closeMobileNav()">Cómo funciona</a>
+  <a href="productos.html" onclick="closeMobileNav()">Productos</a>
+  <a href="proyectos.html" onclick="closeMobileNav()">Proyectos</a>
+  <a href="nosotros.html" onclick="closeMobileNav()">Nosotros</a>
+  <a href="novedades.html" onclick="closeMobileNav()">Novedades</a>
+  <a href="https://wa.me/59121234567" target="_blank" class="btn btn-primary" style="margin-top:16px;" rel="noopener">Pedir cotización</a>
+</nav>
+
+<!-- ══════════════════════════════
+     NAVBAR
+══════════════════════════════ -->
+<header id="navbar" role="banner">
+  <div class="container">
+    <div class="navbar-inner">
+
+      <a href="index.html" class="nav-logo" aria-label="La Tejona — Inicio">
+        <img src="assets/TEJONA-LOGOS-E-IMAGENES-500X500.png" alt="Logo La Tejona" />
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#como-funciona">Cómo funciona</a>
+        <a href="productos.html" class="active">Productos</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="novedades.html">Novedades</a>
+      </nav>
+
+      <div class="nav-cta">
+        <span class="nav-tel">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +591 2 123-4567
+        </span>
+        <a href="https://wa.me/59121234567" target="_blank" class="btn btn-primary btn-sm" rel="noopener">
+          Pedir cotización
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════
+     PAGE HERO
+══════════════════════════════ -->
+<section id="page-hero" aria-label="Catálogo de productos">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="hero-eyebrow">Catálogo completo</div>
+      <h1 class="page-hero-title">Nuestros Productos</h1>
+      <p class="page-hero-sub">
+        Más de 500 productos disponibles. Techado, construcción, acabados y almacenaje con las mejores marcas.
+      </p>
+      <div class="page-hero-actions">
+        <a href="https://wa.me/59121234567?text=Hola%20La%20Tejona,%20quiero%20solicitar%20una%20cotización" target="_blank" class="btn btn-primary" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Solicitar cotización
+        </a>
+        <a href="#categorias" class="btn btn-outline">
+          Ver categorías
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     FILTRO POR CATEGORÍA
+══════════════════════════════ -->
+<div id="filtro" role="navigation" aria-label="Filtro de categorías">
+  <div class="container">
+    <div class="filter-tabs" role="tablist">
+      <button class="filter-tab active" role="tab" aria-selected="true">
+        Todos
+        <span class="tab-count">6</span>
+      </button>
+      <button class="filter-tab" role="tab" aria-selected="false">
+        Techado
+        <span class="tab-count">2</span>
+      </button>
+      <button class="filter-tab" role="tab" aria-selected="false">
+        Construcción
+        <span class="tab-count">1</span>
+      </button>
+      <button class="filter-tab" role="tab" aria-selected="false">
+        Acabados
+        <span class="tab-count">2</span>
+      </button>
+      <button class="filter-tab" role="tab" aria-selected="false">
+        Almacenaje
+        <span class="tab-count">1</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     CATEGORÍAS GRID
+══════════════════════════════ -->
+<section id="categorias" aria-label="Categorías de productos">
+  <div class="container">
+    <div class="cat-section-header">
+      <div class="section-tag fade-in">Explorar por categoría</div>
+      <h2 class="section-title fade-in fade-in-delay-1">Todas las <span>categorías</span></h2>
+      <div class="divider divider-center fade-in fade-in-delay-1"></div>
+      <p class="section-sub fade-in fade-in-delay-2">
+        Desde techado hasta almacenaje, encontrá el material exacto para cada etapa de tu obra.
+      </p>
+    </div>
+
+    <div class="cat-grid">
+
+      <div class="cat-card fade-in">
+        <img src="assets/TEJA-ESPANOLA-CERAMICA.webp" alt="Tejas Españolas Cerámicas" loading="lazy" />
+        <div class="cat-overlay">
+          <div class="cat-name">Tejas Españolas</div>
+          <div class="cat-count">Cerámica · Colonial · Andina</div>
+        </div>
+        <div class="cat-arrow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="cat-card fade-in fade-in-delay-1">
+        <img src="assets/FLEXITEJA-1.webp" alt="Flexitejas bituminosas" loading="lazy" />
+        <div class="cat-overlay">
+          <div class="cat-name">Flexitejas</div>
+          <div class="cat-count">Bituminosas · Asfálticas · Colores</div>
+        </div>
+        <div class="cat-arrow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="cat-card fade-in fade-in-delay-2">
+        <img src="assets/MAXIPLACA-2.webp" alt="Placas Cementicia Maxiplaca Duralit" loading="lazy" />
+        <div class="cat-overlay">
+          <div class="cat-name">Placas Cementicia <span class="badge-top">Top</span></div>
+          <div class="cat-count">Maxiplaca · Fibrocemento · Duralit</div>
+        </div>
+        <div class="cat-arrow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="cat-card fade-in fade-in-delay-3">
+        <img src="assets/TANQUE-BEIGE.webp" alt="Tanques de agua y cisterna" loading="lazy" />
+        <div class="cat-overlay">
+          <div class="cat-name">Tanques</div>
+          <div class="cat-count">Agua · Cisterna · Diferentes capacidades</div>
+        </div>
+        <div class="cat-arrow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="cat-card fade-in fade-in-delay-4">
+        <img src="assets/TEJONA-PINTURAS.webp" alt="Pinturas látex esmalte impermeabilizante" loading="lazy" />
+        <div class="cat-overlay">
+          <div class="cat-name">Pinturas</div>
+          <div class="cat-count">Látex · Esmalte · Impermeabilizante</div>
+        </div>
+        <div class="cat-arrow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="cat-card fade-in fade-in-delay-5">
+        <img src="assets/imagen_2023-06-09_114001724.webp" alt="Cerámica pisos paredes decorativa" loading="lazy" />
+        <div class="cat-overlay">
+          <div class="cat-name">Cerámica</div>
+          <div class="cat-count">Pisos · Paredes · Decorativa</div>
+        </div>
+        <div class="cat-arrow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     PRODUCTOS DESTACADOS
+══════════════════════════════ -->
+<section id="destacados" aria-label="Productos destacados">
+  <div class="container">
+    <div class="destacados-header">
+      <div class="section-tag fade-in">Los más buscados</div>
+      <h2 class="section-title fade-in fade-in-delay-1">Productos <span>destacados</span></h2>
+      <div class="divider divider-center fade-in fade-in-delay-1"></div>
+      <p class="section-sub fade-in fade-in-delay-2">
+        Los materiales más elegidos por constructores y arquitectos en Bolivia.
+      </p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Producto 1 -->
+      <article class="product-card fade-in">
+        <div class="product-card__image">
+          <img src="assets/TEJA-ESPANOLA-CERAMICA.webp" alt="Teja Española Cerámica" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-badge">Techado</span>
+          <h2 class="product-card__title">Teja Española Cerámica</h2>
+          <p class="product-card__desc">
+            Resistencia y elegancia para techados residenciales y comerciales. Certificada para el clima boliviano.
+          </p>
+          <ul class="product-features">
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Resistente a heladas
+            </li>
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Variedad de colores
+            </li>
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Fácil instalación
+            </li>
+          </ul>
+          <a href="https://wa.me/59121234567?text=Hola,%20quiero%20consultar%20el%20precio%20de%20Teja%20Española%20Cerámica" target="_blank" class="btn btn-outline-red" rel="noopener">
+            Consultar precio
+          </a>
+        </div>
+      </article>
+
+      <!-- Producto 2 -->
+      <article class="product-card fade-in fade-in-delay-1">
+        <div class="product-card__image">
+          <img src="assets/FLEXITEJA-1.webp" alt="Flexiteja Bituminosa" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-badge">Techado</span>
+          <h2 class="product-card__title">Flexiteja Bituminosa</h2>
+          <p class="product-card__desc">
+            Versátil y duradera. Ideal para techos con inclinaciones variadas y proyectos donde prima la practicidad.
+          </p>
+          <ul class="product-features">
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Impermeable 100%
+            </li>
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Aislante térmico
+            </li>
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Larga vida útil
+            </li>
+          </ul>
+          <a href="https://wa.me/59121234567?text=Hola,%20quiero%20consultar%20el%20precio%20de%20Flexiteja%20Bituminosa" target="_blank" class="btn btn-outline-red" rel="noopener">
+            Consultar precio
+          </a>
+        </div>
+      </article>
+
+      <!-- Producto 3 -->
+      <article class="product-card fade-in fade-in-delay-2">
+        <div class="product-card__image">
+          <img src="assets/MAXIPLACA-2.webp" alt="Maxiplaca Cementicia" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-badge">Construcción</span>
+          <h2 class="product-card__title">Maxiplaca Cementicia</h2>
+          <p class="product-card__desc">
+            La solución moderna para tabiques, fachadas y muros. Alta resistencia a humedad e impacto.
+          </p>
+          <ul class="product-features">
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Resistente al fuego
+            </li>
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Apta para exteriores
+            </li>
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Compatible con seco
+            </li>
+          </ul>
+          <a href="https://wa.me/59121234567?text=Hola,%20quiero%20consultar%20el%20precio%20de%20Maxiplaca%20Cementicia" target="_blank" class="btn btn-outline-red" rel="noopener">
+            Consultar precio
+          </a>
+        </div>
+      </article>
+
+      <!-- Producto 4 -->
+      <article class="product-card fade-in fade-in-delay-3">
+        <div class="product-card__image">
+          <img src="assets/TEJONA-PINTURAS.webp" alt="Pinturas Ribepar" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-badge">Acabados</span>
+          <h2 class="product-card__title">Pinturas Ribepar</h2>
+          <p class="product-card__desc">
+            Línea completa de acabados interiores y exteriores con formulación especial para el altiplano.
+          </p>
+          <ul class="product-features">
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Antihumedad
+            </li>
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Larga duración
+            </li>
+            <li class="product-feature">
+              <span class="feature-check">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              +200 tonos disponibles
+            </li>
+          </ul>
+          <a href="https://wa.me/59121234567?text=Hola,%20quiero%20consultar%20el%20precio%20de%20Pinturas%20Ribepar" target="_blank" class="btn btn-outline-red" rel="noopener">
+            Consultar precio
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     MARCAS DISTRIBUIDORAS
+══════════════════════════════ -->
+<section id="marcas-prod" aria-label="Marcas que distribuimos">
+  <div class="container">
+    <div class="marcas-prod-header">
+      <div class="section-tag fade-in" style="background:rgba(232,160,32,0.16); color:var(--gold);">Nuestros proveedores</div>
+      <h2 class="section-title fade-in fade-in-delay-1">Marcas que <span style="color:var(--gold);">distribuimos</span></h2>
+      <div class="divider divider-center fade-in fade-in-delay-1"></div>
+      <p class="section-sub fade-in fade-in-delay-2">
+        Distribuidores oficiales de las marcas líderes del sector. Calidad garantizada con respaldo de fábrica.
+      </p>
+    </div>
+  </div>
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <div class="marca-item"><img src="assets/Mesa-de-trabajo-2100.webp" alt="Duralit" loading="lazy" style="height:42px;" /></div>
+      <div class="marca-item"><img src="assets/RIBEPAR-LOGO-HD-1024x367-1.webp" alt="Ribepar" loading="lazy" style="height:38px;" /></div>
+      <div class="marca-item"><span class="marca-text">Vinilit</span></div>
+      <div class="marca-item"><span class="marca-text">Topex</span></div>
+      <div class="marca-item"><span class="marca-text">Plycem</span></div>
+      <div class="marca-item"><span class="marca-text">Weber</span></div>
+      <!-- Duplicados para loop continuo -->
+      <div class="marca-item"><img src="assets/Mesa-de-trabajo-2100.webp" alt="Duralit" loading="lazy" style="height:42px;" /></div>
+      <div class="marca-item"><img src="assets/RIBEPAR-LOGO-HD-1024x367-1.webp" alt="Ribepar" loading="lazy" style="height:38px;" /></div>
+      <div class="marca-item"><span class="marca-text">Vinilit</span></div>
+      <div class="marca-item"><span class="marca-text">Topex</span></div>
+      <div class="marca-item"><span class="marca-text">Plycem</span></div>
+      <div class="marca-item"><span class="marca-text">Weber</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     CTA FINAL
+══════════════════════════════ -->
+<section id="cta-final" aria-label="Contacto">
+  <div class="container">
+    <div class="cta-final-inner">
+      <h2 class="cta-final-title fade-in">¿No encontraste lo que buscás?</h2>
+      <p class="cta-final-sub fade-in fade-in-delay-1">
+        Consultanos directamente. Tenemos más de 500 productos disponibles y podemos conseguirte lo que tu obra necesite.
+      </p>
+      <div class="fade-in fade-in-delay-2">
+        <a href="https://wa.me/59121234567?text=Hola%20La%20Tejona,%20busco%20un%20producto%20que%20no%20encontré%20en%20el%20catálogo" target="_blank" class="btn btn-outline" rel="noopener" style="font-size:1rem; padding:15px 34px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div>
+        <img src="assets/TEJONA-LOGOS-E-IMAGENES-500X500.png" alt="La Tejona" style="max-height:52px; width:auto; margin-bottom:18px; filter:brightness(0) invert(1); opacity:0.9;" />
+        <p class="footer-desc">
+          Distribuidora líder de materiales de construcción en Bolivia. Conectamos proyectos con calidad, desde La Paz hasta cada rincón del país.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2.5"/></svg>
+          </a>
+          <a href="https://wa.me/59121234567" class="social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>La Paz, Bolivia</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.82 19.79 19.79 0 012 3.18 2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>+591 2 123-4567</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>info@latejona.com.bo</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Productos</div>
+        <ul class="footer-links">
+          <li><a href="#">Tejas Españolas</a></li>
+          <li><a href="#">Flexitejas</a></li>
+          <li><a href="#">Placas Cementicia</a></li>
+          <li><a href="#">Pinturas Ribepar</a></li>
+          <li><a href="#">Ver catálogo completo</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li><a href="#">Contacto</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 La Tejona. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Contacto</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════
+     WHATSAPP FLOTANTE
+══════════════════════════════ -->
+<a href="https://wa.me/59121234567" id="wa-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <div class="wa-tooltip">¿Necesitás una cotización?</div>
+  <div class="wa-btn">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </div>
+</a>
+
+
+<!-- ══════════════════════════════
+     JAVASCRIPT
+══════════════════════════════ -->
+<script>
+  /* ── Mobile nav ────────────────────────────────── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    mobileNav.setAttribute('aria-hidden', !mobileNav.classList.contains('open'));
+    hamburger.setAttribute('aria-expanded', mobileNav.classList.contains('open'));
+  });
+  function closeMobileNav() {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  /* ── Fade-in observer ──────────────────────────── */
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        fadeObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -36px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+  /* ── Filter tabs (decorativo) ──────────────────── */
+  const tabs = document.querySelectorAll('.filter-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+    });
+  });
+</script>
+
+</body>
+</html>

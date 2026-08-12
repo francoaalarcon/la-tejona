@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — La Tejona | Materiales de Construcción Bolivia</title>
+  <meta name="description" content="Escribinos, llamanos o visitanos. Respondemos en menos de 30 minutos. La Paz, Bolivia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #222;
+      background: #f6f6f8;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Design tokens ─────────────────────────────────────────── */
+    :root {
+      --red:       #cc0000;
+      --red-hover: #a80000;
+      --dark:      #1a1a1a;
+      --black:     #000000;
+      --bg:        #f6f6f8;
+      --bg-alt:    #ecedef;
+      --white:     #ffffff;
+      --border:    #dddddd;
+      --gold:      #e8a020;
+      --font-head: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius:    12px;
+      --shadow:    0 4px 24px rgba(0,0,0,0.10);
+      --shadow-hover: 0 8px 36px rgba(204,0,0,0.18);
+      --transition: 0.3s ease;
+    }
+
+    /* ─── Utilities ─────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: rgba(204,0,0,0.10);
+      color: var(--red);
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--red); }
+
+    .section-sub {
+      font-size: 1rem;
+      color: #555;
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .divider {
+      width: 56px;
+      height: 4px;
+      background: linear-gradient(to right, var(--red), var(--gold));
+      border-radius: 4px;
+      margin: 14px 0 28px;
+    }
+    .divider-center { margin: 14px auto 28px; }
+
+    /* ─── Buttons ───────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-family: var(--font-head);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--red); color: #fff; border-color: var(--red); }
+    .btn-primary:hover { background: var(--red-hover); border-color: var(--red-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(204,0,0,0.30); }
+    .btn-outline-dark { background: transparent; color: var(--dark); border-color: var(--dark); }
+    .btn-outline-dark:hover { background: var(--dark); color: #fff; }
+    .btn-sm { padding: 9px 20px; font-size: 0.82rem; }
+
+    /* ─── Fade-in animation ─────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.10s; }
+    .fade-in-delay-2 { transition-delay: 0.20s; }
+    .fade-in-delay-3 { transition-delay: 0.30s; }
+    .fade-in-delay-4 { transition-delay: 0.40s; }
+
+    /* ══════════════════════════════════════════════════════════════
+       NAVBAR — siempre dark en subpáginas
+    ══════════════════════════════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      background: var(--dark);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+      padding: 10px 0;
+    }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .nav-logo img {
+      max-height: 46px;
+      width: auto;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.88);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: #fff; background: rgba(255,255,255,0.12); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .nav-tel {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: #fff; border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--dark);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a {
+      color: #fff;
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 600;
+      padding: 12px 24px;
+    }
+    @media (max-width: 900px) {
+      .nav-links, .nav-tel { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       PAGE HERO
+    ══════════════════════════════════════════════════════════════ */
+    #page-hero {
+      position: relative;
+      height: 380px;
+      background-image: url('assets/TEJONA-FOTOS-FONDOS-2.webp');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      margin-top: 66px;
+    }
+    #page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(26,26,26,0.80);
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .page-hero-content .section-tag {
+      margin-bottom: 18px;
+    }
+    .page-hero-content h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .page-hero-content p {
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.80);
+      line-height: 1.65;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .breadcrumb {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.55); transition: color var(--transition); }
+    .breadcrumb a:hover { color: #fff; }
+    .breadcrumb span { color: rgba(255,255,255,0.30); }
+    .breadcrumb strong { color: rgba(255,255,255,0.80); font-weight: 500; }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECCIÓN PRINCIPAL DE CONTACTO
+    ══════════════════════════════════════════════════════════════ */
+    #contacto-main {
+      padding: 100px 0;
+      background: #fff;
+    }
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 60px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .contacto-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    /* ── Formulario ── */
+    .form-col h3 {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .form-col > p {
+      font-size: 0.92rem;
+      color: #777;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .form-grid .form-group-full { grid-column: 1 / -1; }
+    @media (max-width: 560px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid .form-group-full { grid-column: 1; }
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .form-group label .optional {
+      font-weight: 400;
+      color: #aaa;
+      font-size: 0.78rem;
+      margin-left: 4px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.93rem;
+      color: var(--dark);
+      background: #fff;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #bbb; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(204,0,0,0.10);
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .form-submit-row {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .form-submit-row .btn { width: 100%; justify-content: center; padding: 14px 28px; font-size: 0.96rem; }
+    .form-note {
+      font-size: 0.82rem;
+      color: #999;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .form-note a { color: var(--red); font-weight: 600; }
+    .form-note a:hover { text-decoration: underline; }
+
+    /* ── Info columna ── */
+    .info-col h3 {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .info-col > p {
+      font-size: 0.92rem;
+      color: #777;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .info-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .info-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: rgba(204,0,0,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--red);
+      flex-shrink: 0;
+    }
+    .info-icon svg { width: 22px; height: 22px; }
+    .info-block-text h4 {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .info-block-text p,
+    .info-block-text a {
+      font-size: 0.93rem;
+      color: #555;
+      line-height: 1.65;
+    }
+    .info-block-text a:hover { color: var(--red); }
+
+    /* Horario */
+    .horario-block {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin-bottom: 28px;
+      border-left: 3px solid var(--gold);
+    }
+    .horario-block h4 {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .horario-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      color: #555;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .horario-row:last-child { border-bottom: none; }
+    .horario-row span:first-child { color: #888; }
+    .horario-row span:last-child { font-weight: 600; color: var(--dark); }
+
+    /* WhatsApp block */
+    .wa-block {
+      background: rgba(37,211,102,0.08);
+      border: 1.5px solid rgba(37,211,102,0.32);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: var(--transition);
+    }
+    .wa-block:hover {
+      background: rgba(37,211,102,0.14);
+      border-color: rgba(37,211,102,0.55);
+    }
+    .wa-block-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+    }
+    .wa-block-icon svg { width: 26px; height: 26px; }
+    .wa-block-text p {
+      font-size: 0.82rem;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    .wa-block-text a {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a8f44;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wa-block-text a:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════════════════════════════
+       MAPA PLACEHOLDER
+    ══════════════════════════════════════════════════════════════ */
+    #mapa {
+      padding: 80px 0;
+      background: var(--bg);
+    }
+    .mapa-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .mapa-header .section-sub { margin: 0 auto; }
+
+    .mapa-placeholder {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      background: #e8e4de;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Patrón de fondo estilo mapa */
+    .mapa-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200,195,185,0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,195,185,0.5) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    /* "Calles" simuladas */
+    .mapa-street-h {
+      position: absolute;
+      height: 8px;
+      background: rgba(255,255,255,0.80);
+      border-radius: 4px;
+    }
+    .mapa-street-v {
+      position: absolute;
+      width: 8px;
+      background: rgba(255,255,255,0.80);
+      border-radius: 4px;
+    }
+    .mapa-street-h.s1 { top: 38%; left: 0; right: 0; height: 10px; }
+    .mapa-street-h.s2 { top: 62%; left: 0; right: 0; }
+    .mapa-street-h.s3 { top: 18%; left: 15%; right: 30%; height: 6px; }
+    .mapa-street-h.s4 { top: 80%; left: 20%; right: 10%; height: 6px; }
+    .mapa-street-v.v1 { left: 28%; top: 0; bottom: 0; width: 10px; }
+    .mapa-street-v.v2 { left: 62%; top: 0; bottom: 0; }
+    .mapa-street-v.v3 { left: 45%; top: 20%; bottom: 15%; width: 6px; }
+    .mapa-blocks {
+      position: absolute;
+      inset: 0;
+    }
+    .mapa-block {
+      position: absolute;
+      background: rgba(215,208,198,0.70);
+      border-radius: 4px;
+    }
+    .mapa-block.b1 { top: 8%; left: 5%; width: 20%; height: 26%; }
+    .mapa-block.b2 { top: 8%; left: 30%; width: 28%; height: 26%; }
+    .mapa-block.b3 { top: 8%; left: 65%; width: 30%; height: 26%; }
+    .mapa-block.b4 { top: 42%; left: 5%; width: 18%; height: 16%; }
+    .mapa-block.b5 { top: 42%; left: 30%; width: 28%; height: 16%; }
+    .mapa-block.b6 { top: 42%; left: 65%; width: 30%; height: 16%; }
+    .mapa-block.b7 { top: 66%; left: 5%; width: 20%; height: 22%; }
+    .mapa-block.b8 { top: 66%; left: 30%; width: 28%; height: 22%; }
+    .mapa-block.b9 { top: 66%; left: 65%; width: 30%; height: 22%; }
+    /* Pin central */
+    .mapa-pin-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .mapa-pin {
+      width: 52px; height: 52px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--red);
+      transform: rotate(-45deg);
+      box-shadow: 0 6px 24px rgba(204,0,0,0.45);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0;
+    }
+    .mapa-pin svg {
+      transform: rotate(45deg);
+      width: 24px; height: 24px;
+      color: #fff;
+    }
+    .mapa-pin-shadow {
+      width: 20px; height: 8px;
+      background: rgba(0,0,0,0.20);
+      border-radius: 50%;
+      margin-top: 4px;
+      filter: blur(3px);
+    }
+    .mapa-info-card {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 18px 28px;
+      box-shadow: 0 8px 36px rgba(0,0,0,0.16);
+      text-align: center;
+      white-space: nowrap;
+      z-index: 3;
+    }
+    .mapa-info-card strong {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .mapa-info-card span {
+      font-size: 0.82rem;
+      color: #888;
+    }
+    .mapa-info-card .mapa-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(204,0,0,0.08);
+      color: var(--red);
+      font-family: var(--font-head);
+      font-size: 0.70rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 6px;
+    }
+    @media (max-width: 560px) {
+      .mapa-placeholder { height: 340px; }
+      .mapa-info-card { white-space: normal; width: calc(100% - 48px); }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SUCURSALES
+    ══════════════════════════════════════════════════════════════ */
+    #sucursales {
+      background: var(--dark);
+      padding: 90px 0;
+    }
+    .sucursales-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .sucursales-header .section-title { color: #fff; }
+    .sucursales-header .section-title span { color: var(--gold); }
+    .sucursales-header .section-sub { color: rgba(255,255,255,0.55); margin: 0 auto; }
+
+    .sucursales-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .sucursales-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+
+    .sucursal-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .sucursal-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--red), var(--gold));
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .sucursal-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.20);
+      transform: translateY(-4px);
+    }
+    .sucursal-card:hover::before { opacity: 1; }
+    .sucursal-num {
+      font-family: var(--font-head);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .sucursal-name {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .sucursal-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.55;
+    }
+    .sucursal-detail svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: rgba(255,255,255,0.30);
+      width: 15px; height: 15px;
+    }
+    .sucursal-card .btn-sucursal {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 24px;
+      font-family: var(--font-head);
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--gold);
+      border: 1px solid rgba(232,160,32,0.40);
+      padding: 9px 18px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .sucursal-card .btn-sucursal:hover {
+      background: rgba(232,160,32,0.12);
+      border-color: var(--gold);
+    }
+    .sucursal-card .btn-sucursal svg { width: 13px; height: 13px; }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════════ */
+    #footer {
+      background: #0e1c24;
+      color: rgba(255,255,255,0.75);
+      padding: 80px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.4fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+
+    .footer-brand img {
+      max-height: 54px; width: auto;
+      margin-bottom: 18px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .footer-desc {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.50);
+      max-width: 280px;
+      margin-bottom: 24px;
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.65);
+      transition: var(--transition);
+    }
+    .social-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    .social-btn svg { width: 16px; height: 16px; }
+
+    .footer-col-title {
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.52);
+      transition: var(--transition);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .footer-links a::before { content: '›'; color: var(--red); font-size: 1rem; }
+    .footer-links a:hover { color: #fff; transform: translateX(4px); }
+    .footer-contact-item {
+      display: flex; align-items: flex-start;
+      gap: 11px; margin-bottom: 14px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.58);
+    }
+    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--red); width: 16px; height: 16px; }
+    .footer-contact-item a { color: rgba(255,255,255,0.58); }
+    .footer-contact-item a:hover { color: #fff; }
+    .footer-bottom {
+      padding: 24px 0;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      transition: color var(--transition);
+    }
+    .footer-bottom-links a:hover { color: rgba(255,255,255,0.65); }
+    @media (max-width: 480px) { .footer-bottom { flex-direction: column; text-align: center; } }
+
+    /* ══════════════════════════════════════════════════════════════
+       WHATSAPP FLOTANTE
+    ══════════════════════════════════════════════════════════════ */
+    #wa-float {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      z-index: 900;
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 10px;
+    }
+    .wa-tooltip {
+      background: var(--dark);
+      color: #fff;
+      font-family: var(--font-head);
+      font-size: 0.80rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: var(--transition);
+      pointer-events: none;
+      box-shadow: var(--shadow);
+    }
+    #wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+    .wa-btn {
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.42);
+      transition: var(--transition);
+      animation: wa-pulse 2.5s ease infinite;
+    }
+    .wa-btn:hover { background: #20b858; transform: scale(1.08); animation: none; }
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.42); }
+      50% { box-shadow: 0 6px 36px rgba(37,211,102,0.72), 0 0 0 12px rgba(37,211,102,0.08); }
+    }
+    @media (max-width: 768px) {
+      #wa-float { bottom: 20px; right: 20px; }
+      .wa-btn { width: 52px; height: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     MOBILE NAV OVERLAY
+══════════════════════════════ -->
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <a href="index.html" onclick="closeMobileNav()">Inicio</a>
+  <a href="index.html#como-funciona" onclick="closeMobileNav()">Cómo funciona</a>
+  <a href="productos.html" onclick="closeMobileNav()">Productos</a>
+  <a href="proyectos.html" onclick="closeMobileNav()">Proyectos</a>
+  <a href="nosotros.html" onclick="closeMobileNav()">Nosotros</a>
+  <a href="novedades.html" onclick="closeMobileNav()">Novedades</a>
+  <a href="https://wa.me/59121234567" target="_blank" class="btn btn-primary" style="margin-top:16px;" rel="noopener">Pedir cotización</a>
+</nav>
+
+<!-- ══════════════════════════════
+     NAVBAR
+══════════════════════════════ -->
+<header id="navbar" role="banner">
+  <div class="container">
+    <div class="navbar-inner">
+
+      <a href="index.html" class="nav-logo" aria-label="La Tejona — Inicio">
+        <img src="assets/TEJONA-LOGOS-E-IMAGENES-500X500.png" alt="Logo La Tejona" />
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#como-funciona">Cómo funciona</a>
+        <a href="productos.html">Productos</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="novedades.html">Novedades</a>
+      </nav>
+
+      <div class="nav-cta">
+        <span class="nav-tel">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +591 2 123-4567
+        </span>
+        <a href="https://wa.me/59121234567" target="_blank" class="btn btn-primary btn-sm" rel="noopener">
+          Pedir cotización
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════
+     PAGE HERO
+══════════════════════════════ -->
+<section id="page-hero" aria-label="Contacto">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="section-tag">Estamos aquí para ayudarte</div>
+      <h1>Contáctanos</h1>
+      <p>Escribinos, llamanos o visitanos. Te respondemos en menos de 30 minutos.</p>
+    </div>
+  </div>
+  <div class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span>›</span>
+    <strong>Contacto</strong>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     SECCIÓN PRINCIPAL
+══════════════════════════════ -->
+<section id="contacto-main" aria-label="Formulario y datos de contacto">
+  <div class="container">
+    <div class="contacto-grid">
+
+      <!-- ── Formulario ── -->
+      <div class="form-col fade-in">
+        <h3>Envianos tu consulta</h3>
+        <p>Completá el formulario y nos ponemos en contacto a la brevedad. Todos los campos con * son obligatorios.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="nombre">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" autocomplete="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="empresa">Empresa <span class="optional">(opcional)</span></label>
+              <input type="text" id="empresa" name="empresa" placeholder="Constructora XYZ" autocomplete="organization" />
+            </div>
+
+            <div class="form-group">
+              <label for="telefono">Teléfono *</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+591 7 000-0000" autocomplete="tel" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" autocomplete="email" required />
+            </div>
+
+            <div class="form-group form-group-full">
+              <label for="tipo">Tipo de proyecto *</label>
+              <select id="tipo" name="tipo" required>
+                <option value="" disabled selected>Seleccioná una opción</option>
+                <option value="residencial">Residencial (vivienda particular)</option>
+                <option value="comercial">Comercial (locales, oficinas)</option>
+                <option value="industrial">Industrial (galpones, depósitos)</option>
+                <option value="rural">Rural (campo, agropecuario)</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="form-group form-group-full">
+              <label for="mensaje">Mensaje *</label>
+              <textarea id="mensaje" name="mensaje" rows="4" placeholder="Contanos sobre tu proyecto, qué materiales necesitás, cantidades estimadas, zona de entrega..." required></textarea>
+            </div>
+
+          </div>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn btn-primary">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Enviar consulta
+            </button>
+            <p class="form-note">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              También podés escribirnos directo por <a href="https://wa.me/59121234567" target="_blank" rel="noopener">WhatsApp</a>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- ── Columna Info ── -->
+      <div class="info-col fade-in fade-in-delay-2">
+        <h3>Información de contacto</h3>
+        <p>Encontranos en nuestra sede principal o escribinos por cualquiera de estos canales.</p>
+
+        <!-- Ubicación -->
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="info-block-text">
+            <h4>Ubicación</h4>
+            <p>Av. Principal #123<br />La Paz, Bolivia</p>
+          </div>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <div class="info-block-text">
+            <h4>Teléfono</h4>
+            <p>
+              <a href="tel:+59121234567">+591 2 123-4567</a><br />
+              <a href="tel:+59171234567">+591 7 123-4567</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="info-block-text">
+            <h4>Email</h4>
+            <a href="mailto:info@latejona.com.bo">info@latejona.com.bo</a>
+          </div>
+        </div>
+
+        <!-- Horario -->
+        <div class="horario-block">
+          <h4>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Horario de atención
+          </h4>
+          <div class="horario-row">
+            <span>Lunes a Viernes</span>
+            <span>8:00 – 18:00</span>
+          </div>
+          <div class="horario-row">
+            <span>Sábados</span>
+            <span>9:00 – 13:00</span>
+          </div>
+          <div class="horario-row">
+            <span>Domingos y feriados</span>
+            <span>Cerrado</span>
+          </div>
+        </div>
+
+        <!-- WhatsApp destacado -->
+        <a href="https://wa.me/59121234567" class="wa-block" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+          <div class="wa-block-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
+          <div class="wa-block-text">
+            <p>Respuesta inmediata</p>
+            <a href="https://wa.me/59121234567" target="_blank" rel="noopener">
+              Escribinos por WhatsApp
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     MAPA PLACEHOLDER
+══════════════════════════════ -->
+<section id="mapa" aria-label="Ubicación en mapa">
+  <div class="container">
+    <div class="mapa-header fade-in">
+      <div class="section-tag">Encontranos</div>
+      <h2 class="section-title">Nuestra <span>ubicación</span></h2>
+      <div class="divider divider-center"></div>
+      <p class="section-sub">Pasá por nuestro local principal en La Paz. Amplio estacionamiento y atención personalizada.</p>
+    </div>
+
+    <div class="mapa-placeholder fade-in">
+      <!-- Calles simuladas -->
+      <div class="mapa-street-h s1"></div>
+      <div class="mapa-street-h s2"></div>
+      <div class="mapa-street-h s3"></div>
+      <div class="mapa-street-h s4"></div>
+      <div class="mapa-street-v v1"></div>
+      <div class="mapa-street-v v2"></div>
+      <div class="mapa-street-v v3"></div>
+      <!-- Manzanas -->
+      <div class="mapa-blocks">
+        <div class="mapa-block b1"></div>
+        <div class="mapa-block b2"></div>
+        <div class="mapa-block b3"></div>
+        <div class="mapa-block b4"></div>
+        <div class="mapa-block b5"></div>
+        <div class="mapa-block b6"></div>
+        <div class="mapa-block b7"></div>
+        <div class="mapa-block b8"></div>
+        <div class="mapa-block b9"></div>
+      </div>
+      <!-- Pin -->
+      <div class="mapa-pin-wrap">
+        <div class="mapa-pin">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div class="mapa-pin-shadow"></div>
+      </div>
+      <!-- Info card -->
+      <div class="mapa-info-card">
+        <div class="mapa-badge">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+          Sede principal
+        </div>
+        <strong>La Tejona — La Paz, Bolivia</strong>
+        <span>Av. Principal #123, La Paz</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     SUCURSALES
+══════════════════════════════ -->
+<section id="sucursales" aria-labelledby="sucursales-titulo">
+  <div class="container">
+    <div class="sucursales-header fade-in">
+      <div class="section-tag" style="background:rgba(232,160,32,0.14);color:var(--gold);border:1px solid rgba(232,160,32,0.35);">Puntos de atención</div>
+      <h2 class="section-title" id="sucursales-titulo">Nuestras <span>sucursales</span></h2>
+      <div class="divider divider-center"></div>
+      <p class="section-sub">Tres ubicaciones en La Paz para servirte mejor. Encontrá la más cercana a tu obra.</p>
+    </div>
+
+    <div class="sucursales-grid">
+
+      <!-- Sucursal 1 -->
+      <div class="sucursal-card fade-in fade-in-delay-1">
+        <p class="sucursal-num">Sucursal 01 · Principal</p>
+        <h3 class="sucursal-name">La Tejona Centro</h3>
+        <div class="sucursal-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Av. Principal #123, Zona Central, La Paz</span>
+        </div>
+        <div class="sucursal-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Lun–Vie: 8:00–18:00<br />Sáb: 9:00–13:00</span>
+        </div>
+        <div class="sucursal-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>+591 2 123-4567</span>
+        </div>
+        <a href="https://wa.me/59121234567" target="_blank" rel="noopener" class="btn-sucursal">
+          Cómo llegar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Sucursal 2 -->
+      <div class="sucursal-card fade-in fade-in-delay-2">
+        <p class="sucursal-num">Sucursal 02 · Norte</p>
+        <h3 class="sucursal-name">La Tejona El Alto</h3>
+        <div class="sucursal-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Av. 6 de Marzo #456, Zona Norte, El Alto</span>
+        </div>
+        <div class="sucursal-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Lun–Vie: 8:00–17:30<br />Sáb: 9:00–13:00</span>
+        </div>
+        <div class="sucursal-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>+591 2 456-7890</span>
+        </div>
+        <a href="https://wa.me/59121234567" target="_blank" rel="noopener" class="btn-sucursal">
+          Cómo llegar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Sucursal 3 -->
+      <div class="sucursal-card fade-in fade-in-delay-3">
+        <p class="sucursal-num">Sucursal 03 · Sur</p>
+        <h3 class="sucursal-name">La Tejona Calacoto</h3>
+        <div class="sucursal-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Calle 21 de Calacoto #789, Zona Sur, La Paz</span>
+        </div>
+        <div class="sucursal-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Lun–Vie: 8:30–18:00<br />Sáb: 9:00–12:30</span>
+        </div>
+        <div class="sucursal-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>+591 2 789-0123</span>
+        </div>
+        <a href="https://wa.me/59121234567" target="_blank" rel="noopener" class="btn-sucursal">
+          Cómo llegar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <img src="assets/TEJONA-LOGOS-E-IMAGENES-500X500.png" alt="La Tejona" />
+        <p class="footer-desc">
+          Distribuidora líder de materiales de construcción en Bolivia. Más de 20 años entregando calidad, confianza y servicio a cada obra.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://wa.me/59121234567" class="social-btn" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <p class="footer-col-title">Contacto</p>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Av. Principal #123<br />La Paz, Bolivia</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>
+            <a href="tel:+59121234567">+591 2 123-4567</a><br />
+            <a href="tel:+59171234567">+591 7 123-4567</a>
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:info@latejona.com.bo">info@latejona.com.bo</a>
+        </div>
+      </div>
+
+      <!-- Productos -->
+      <div>
+        <p class="footer-col-title">Productos</p>
+        <ul class="footer-links">
+          <li><a href="productos.html">Tejas y Cubiertas</a></li>
+          <li><a href="productos.html">Placas y Paneles</a></li>
+          <li><a href="productos.html">Tanques y Depósitos</a></li>
+          <li><a href="productos.html">Pinturas</a></li>
+          <li><a href="productos.html">Ver catálogo completo</a></li>
+        </ul>
+      </div>
+
+      <!-- Empresa -->
+      <div>
+        <p class="footer-col-title">Empresa</p>
+        <ul class="footer-links">
+          <li><a href="nosotros.html">Quiénes somos</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 La Tejona. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Política de privacidad</a>
+        <a href="#">Términos de uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════
+     WHATSAPP FLOTANTE
+══════════════════════════════ -->
+<div id="wa-float">
+  <div class="wa-tooltip">¡Escribinos ahora!</div>
+  <a href="https://wa.me/59121234567" target="_blank" rel="noopener" class="wa-btn" aria-label="Contactar por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</div>
+
+
+<script>
+  /* ── Hamburger / Mobile Nav ────────────────────────── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    mobileNav.setAttribute('aria-hidden', !isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  function closeMobileNav() {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Fade-in IntersectionObserver ─────────────────── */
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => fadeObserver.observe(el));
+
+  /* ── Manejo del formulario (UI only) ──────────────── */
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Validación simple
+    const nombre  = document.getElementById('nombre').value.trim();
+    const tel     = document.getElementById('telefono').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const tipo    = document.getElementById('tipo').value;
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    if (!nombre || !tel || !email || !tipo || !mensaje) {
+      showFormMsg('Por favor completá todos los campos obligatorios.', false);
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showFormMsg('Ingresá un correo electrónico válido.', false);
+      return;
+    }
+
+    // Simular envío exitoso
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    setTimeout(() => {
+      showFormMsg('¡Consulta enviada! Te respondemos en menos de 30 minutos.', true);
+      form.reset();
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar consulta`;
+    }, 1200);
+  });
+
+  function showFormMsg(text, success) {
+    let msg = document.getElementById('formMsg');
+    if (!msg) {
+      msg = document.createElement('div');
+      msg.id = 'formMsg';
+      msg.style.cssText = `
+        margin-top: 14px;
+        padding: 12px 18px;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.88rem;
+        font-weight: 600;
+        text-align: center;
+        transition: opacity 0.3s ease;
+      `;
+      form.querySelector('.form-submit-row').appendChild(msg);
+    }
+    msg.textContent = text;
+    msg.style.background = success ? 'rgba(37,211,102,0.12)' : 'rgba(204,0,0,0.10)';
+    msg.style.color = success ? '#1a7f44' : '#cc0000';
+    msg.style.border = success ? '1px solid rgba(37,211,102,0.30)' : '1px solid rgba(204,0,0,0.20)';
+
+    setTimeout(() => { msg.style.opacity = '0'; }, 5000);
+    setTimeout(() => { msg.style.opacity = '1'; }, 10);
+  }
+</script>
+
+</body>
+</html>
