@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos y Condiciones — La Tejona</title>
+  <meta name="description" content="Términos y condiciones de uso del sitio web y servicios de La Tejona, distribuidora de materiales de construcción en Bolivia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #222; background: #f6f6f8; line-height: 1.6; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    :root {
+      --red: #cc0000; --red-hover: #a80000; --dark: #1a1a1a; --bg: #f6f6f8;
+      --bg-alt: #ecedef; --white: #ffffff; --border: #dddddd; --gold: #e8a020;
+      --radius: 12px; --shadow: 0 4px 24px rgba(0,0,0,0.10);
+      --shadow-hover: 0 8px 36px rgba(204,0,0,0.18); --transition: 0.3s ease;
+      --font-head: 'Poppins', sans-serif; --font-body: 'Inter', sans-serif;
+    }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    #navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--dark); box-shadow: 0 2px 20px rgba(0,0,0,0.35); padding: 12px 0; }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .nav-logo img { max-height: 50px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a { color: rgba(255,255,255,0.85); font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: var(--transition); }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.12); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-family: var(--font-head); font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: var(--transition); border: 2px solid transparent; }
+    .btn-primary { background: var(--red); color: #fff; border-color: var(--red); }
+    .btn-primary:hover { background: var(--red-hover); border-color: var(--red-hover); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: var(--transition); }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: var(--dark); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 10px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a { color: #fff; font-family: var(--font-head); font-size: 1.4rem; font-weight: 600; padding: 12px 24px; }
+    @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .mobile-nav { display: flex; } .nav-cta .btn { display: none; } }
+
+    .page-hero { padding: 140px 0 70px; background: var(--dark); position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(204,0,0,0.08) 0%, rgba(232,160,32,0.06) 100%); }
+    .page-hero__inner { position: relative; z-index: 2; }
+    .page-hero__breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+    .page-hero__breadcrumb a { font-size: 0.82rem; color: rgba(255,255,255,0.50); transition: color var(--transition); }
+    .page-hero__breadcrumb a:hover { color: rgba(255,255,255,0.85); }
+    .page-hero__breadcrumb span { font-size: 0.82rem; color: rgba(255,255,255,0.30); }
+    .page-hero__breadcrumb strong { font-size: 0.82rem; color: rgba(255,255,255,0.70); font-weight: 500; }
+    .page-hero h1 { font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 12px; }
+    .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 580px; }
+
+    .legal-section { padding: 80px 0 100px; background: #fff; }
+    .legal-layout { display: grid; grid-template-columns: 260px 1fr; gap: 64px; align-items: start; }
+    @media (max-width: 900px) { .legal-layout { grid-template-columns: 1fr; gap: 40px; } }
+    .legal-toc { position: sticky; top: 90px; background: var(--bg); border-radius: var(--radius); padding: 28px 24px; border: 1px solid var(--border); }
+    .legal-toc h3 { font-family: var(--font-head); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+    .legal-toc ul { display: flex; flex-direction: column; gap: 2px; }
+    .legal-toc ul li a { display: block; font-size: 0.88rem; color: #555; padding: 7px 12px; border-radius: 6px; transition: var(--transition); font-family: var(--font-head); font-weight: 500; }
+    .legal-toc ul li a:hover { background: rgba(204,0,0,0.08); color: var(--red); }
+    .legal-meta { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 0.78rem; color: #aaa; line-height: 1.6; }
+    @media (max-width: 900px) { .legal-toc { position: static; } }
+    .legal-body { max-width: 760px; }
+    .legal-body h2 { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; color: var(--dark); margin: 52px 0 16px; padding-top: 20px; border-top: 2px solid var(--border); }
+    .legal-body h2:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+    .legal-body h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 600; color: var(--dark); margin: 28px 0 10px; }
+    .legal-body p { font-size: 0.96rem; color: #444; line-height: 1.85; margin-bottom: 16px; }
+    .legal-body ul, .legal-body ol { padding-left: 20px; margin-bottom: 16px; }
+    .legal-body ul { list-style: disc; }
+    .legal-body ol { list-style: decimal; }
+    .legal-body li { font-size: 0.96rem; color: #444; line-height: 1.85; margin-bottom: 6px; }
+    .legal-body a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+    .legal-body a:hover { color: var(--red-hover); }
+    .legal-highlight { background: rgba(204,0,0,0.06); border-left: 4px solid var(--red); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; }
+    .legal-highlight p { margin: 0; color: #444; font-size: 0.94rem; }
+    .legal-highlight--gold { background: rgba(232,160,32,0.08); border-left-color: var(--gold); }
+
+    #footer { background: #0e1c24; color: rgba(255,255,255,0.75); padding: 80px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+    .footer-desc { font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.50); max-width: 280px; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn { width: 38px; height: 38px; border-radius: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.65); transition: var(--transition); }
+    .social-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    .social-btn svg { width: 16px; height: 16px; }
+    .footer-col-title { font-family: var(--font-head); font-size: 0.88rem; font-weight: 600; color: #fff; margin-bottom: 20px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.88rem; color: rgba(255,255,255,0.52); transition: var(--transition); display: flex; align-items: center; gap: 6px; }
+    .footer-links a::before { content: '›'; color: var(--red); font-size: 1rem; }
+    .footer-links a:hover { color: #fff; transform: translateX(4px); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 11px; margin-bottom: 14px; font-size: 0.88rem; color: rgba(255,255,255,0.58); }
+    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--red); }
+    .footer-bottom { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 0.80rem; color: rgba(255,255,255,0.35); }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { font-size: 0.80rem; color: rgba(255,255,255,0.35); transition: color var(--transition); }
+    .footer-bottom-links a:hover { color: rgba(255,255,255,0.65); }
+    #wa-float { position: fixed; bottom: 32px; right: 32px; z-index: 900; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    .wa-tooltip { background: var(--dark); color: #fff; font-family: var(--font-head); font-size: 0.80rem; font-weight: 600; padding: 8px 16px; border-radius: 8px; white-space: nowrap; opacity: 0; transform: translateX(10px); transition: var(--transition); pointer-events: none; }
+    #wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+    .wa-btn { width: 56px; height: 56px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 6px 24px rgba(37,211,102,0.42); transition: var(--transition); }
+    .wa-btn:hover { background: #20b858; transform: scale(1.08); }
+  </style>
+</head>
+<body>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="closeMobileNav()">Inicio</a>
+  <a href="productos.html" onclick="closeMobileNav()">Productos</a>
+  <a href="proyectos.html" onclick="closeMobileNav()">Proyectos</a>
+  <a href="nosotros.html" onclick="closeMobileNav()">Nosotros</a>
+  <a href="novedades.html" onclick="closeMobileNav()">Novedades</a>
+  <a href="contacto.html" onclick="closeMobileNav()">Contacto</a>
+</nav>
+
+<header id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo"><img src="assets/TEJONA-LOGOS-E-IMAGENES-500X500.png" alt="La Tejona" /></a>
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="novedades.html">Novedades</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://wa.me/59121234567" target="_blank" class="btn btn-primary" rel="noopener">Pedir cotización</a>
+        <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero__inner">
+      <div class="page-hero__breadcrumb">
+        <a href="index.html">Inicio</a>
+        <span>›</span>
+        <strong>Términos y Condiciones</strong>
+      </div>
+      <h1>Términos y Condiciones</h1>
+      <p>Las condiciones que regulan el uso de nuestro sitio web y la relación comercial con La Tejona.</p>
+    </div>
+  </div>
+</div>
+
+<section class="legal-section">
+  <div class="container">
+    <div class="legal-layout">
+
+      <aside class="legal-toc">
+        <h3>Contenido</h3>
+        <ul>
+          <li><a href="#aceptacion">1. Aceptación de términos</a></li>
+          <li><a href="#descripcion">2. Descripción del servicio</a></li>
+          <li><a href="#uso-sitio">3. Uso del sitio web</a></li>
+          <li><a href="#productos-precios">4. Productos y precios</a></li>
+          <li><a href="#pedidos">5. Pedidos y entregas</a></li>
+          <li><a href="#pagos">6. Pagos y facturación</a></li>
+          <li><a href="#garantias">7. Garantías y devoluciones</a></li>
+          <li><a href="#propiedad">8. Propiedad intelectual</a></li>
+          <li><a href="#responsabilidad">9. Limitación de responsabilidad</a></li>
+          <li><a href="#privacidad">10. Privacidad</a></li>
+          <li><a href="#modificaciones">11. Modificaciones</a></li>
+          <li><a href="#ley">12. Ley aplicable</a></li>
+          <li><a href="#contacto">13. Contacto</a></li>
+        </ul>
+        <div class="legal-meta">
+          <strong>Última actualización:</strong><br />
+          Agosto de 2024<br /><br />
+          <strong>Versión:</strong> 1.0
+        </div>
+      </aside>
+
+      <div class="legal-body">
+
+        <h2 id="aceptacion">1. Aceptación de los términos</h2>
+        <p>Al acceder y utilizar el sitio web de La Tejona (en adelante "el Sitio") o al solicitar nuestros productos y servicios, aceptás quedar vinculado por estos Términos y Condiciones (en adelante "los Términos"). Si no estás de acuerdo con alguno de estos términos, te pedimos que no utilices nuestro sitio.</p>
+        <div class="legal-highlight">
+          <p>Estos Términos constituyen el acuerdo completo entre vos y La Tejona Distribuidora S.R.L. respecto al uso del Sitio y la adquisición de nuestros productos. Prevalecen sobre cualquier comunicación anterior.</p>
+        </div>
+
+        <h2 id="descripcion">2. Descripción del servicio</h2>
+        <p>La Tejona es una distribuidora de materiales de construcción con sede en La Paz, Bolivia. A través de nuestro sitio web ofrecemos:</p>
+        <ul>
+          <li>Información sobre nuestro catálogo de productos (tejas, placas cementicia, tanques, pinturas, cerámica y más).</li>
+          <li>Canal de contacto para solicitar cotizaciones y asesoramiento técnico.</li>
+          <li>Información sobre tipos de proyectos y aplicaciones de materiales.</li>
+          <li>Blog con contenido informativo sobre construcción y materiales.</li>
+        </ul>
+        <p>El sitio web tiene carácter informativo y de catálogo. Las transacciones comerciales se concluyen por canales directos (WhatsApp, teléfono, visita a nuestras instalaciones).</p>
+
+        <h2 id="uso-sitio">3. Uso del sitio web</h2>
+        <h3>3.1 Uso permitido</h3>
+        <p>El Sitio puede ser utilizado únicamente con fines lícitos y de acuerdo con estos Términos. Podés:</p>
+        <ul>
+          <li>Navegar y consultar información sobre nuestros productos.</li>
+          <li>Utilizar los formularios de contacto para solicitar información o cotizaciones.</li>
+          <li>Compartir contenido del sitio con atribución a La Tejona.</li>
+        </ul>
+        <h3>3.2 Uso prohibido</h3>
+        <p>Queda prohibido:</p>
+        <ul>
+          <li>Utilizar el Sitio de forma que infrinja cualquier ley o regulación aplicable.</li>
+          <li>Intentar acceder sin autorización a sistemas o redes conectados al Sitio.</li>
+          <li>Introducir virus, troyanos u otro código malicioso.</li>
+          <li>Utilizar robots, scrapers u otras herramientas automáticas para extraer datos del Sitio.</li>
+          <li>Reproducir o distribuir contenido del Sitio sin autorización expresa de La Tejona.</li>
+        </ul>
+
+        <h2 id="productos-precios">4. Productos y precios</h2>
+        <p>La información sobre productos disponible en el Sitio tiene carácter referencial e informativo.</p>
+        <ul>
+          <li><strong>Disponibilidad:</strong> el stock puede variar. La disponibilidad confirmada se informa al momento de la cotización.</li>
+          <li><strong>Precios:</strong> los precios indicados o cotizados están expresados en bolivianos (BOB) o la moneda acordada, y pueden variar según volumen, condiciones de entrega y fluctuaciones del mercado.</li>
+          <li><strong>Variaciones de producto:</strong> las imágenes son ilustrativas. Los productos pueden presentar variaciones de color, textura o dimensiones dentro de los rangos de tolerancia del fabricante.</li>
+        </ul>
+        <div class="legal-highlight legal-highlight--gold">
+          <p><strong>Nota importante:</strong> los precios definitivos se confirman mediante cotización formal emitida por La Tejona. Una cotización tiene validez de 7 días hábiles salvo que se indique lo contrario.</p>
+        </div>
+
+        <h2 id="pedidos">5. Pedidos y entregas</h2>
+        <h3>5.1 Proceso de pedido</h3>
+        <ol>
+          <li>El cliente solicita cotización por WhatsApp, teléfono o formulario web.</li>
+          <li>La Tejona emite cotización formal con detalle de productos, precios y condiciones.</li>
+          <li>El cliente aprueba la cotización y se acuerdan condiciones de pago y entrega.</li>
+          <li>Confirmado el pago (o crédito autorizado), se coordina la entrega.</li>
+        </ol>
+        <h3>5.2 Entrega</h3>
+        <ul>
+          <li>Las entregas se realizan en el área metropolitana de La Paz y El Alto.</li>
+          <li>El plazo de entrega se acuerda al momento de confirmar el pedido.</li>
+          <li>La Tejona no se responsabiliza por retrasos causados por factores externos (clima, huelgas, restricciones de circulación).</li>
+          <li>El cliente o su representante debe estar presente en la obra para recibir los materiales.</li>
+        </ul>
+
+        <h2 id="pagos">6. Pagos y facturación</h2>
+        <ul>
+          <li>Los medios de pago aceptados se informan al momento de la cotización (efectivo, transferencia bancaria, otros según acuerdo).</li>
+          <li>La factura se emite de acuerdo con la normativa tributaria boliviana (Ley 843 y sus modificaciones).</li>
+          <li>Proyectos de gran volumen pueden acceder a condiciones de crédito previa evaluación y aprobación.</li>
+          <li>El incumplimiento en los plazos de pago puede generar intereses moratorios según lo acordado en la cotización.</li>
+        </ul>
+
+        <h2 id="garantias">7. Garantías y devoluciones</h2>
+        <h3>7.1 Garantía de productos</h3>
+        <p>Los productos distribuidos por La Tejona están respaldados por la garantía del fabricante. La Tejona actúa como intermediario para gestionar reclamos de garantía ante los fabricantes o marcas correspondientes.</p>
+        <h3>7.2 Devoluciones</h3>
+        <ul>
+          <li>Las devoluciones por defectos de fabricación deben reportarse dentro de los 7 días hábiles posteriores a la recepción.</li>
+          <li>No se aceptan devoluciones de productos en buen estado una vez entregados, salvo acuerdo previo y por escrito.</li>
+          <li>Los productos deben devolverse en su embalaje original y sin signos de uso o instalación.</li>
+          <li>El flete de devolución corre por cuenta del cliente, salvo que el defecto sea comprobado.</li>
+        </ul>
+
+        <h2 id="propiedad">8. Propiedad intelectual</h2>
+        <p>Todo el contenido del Sitio —incluyendo textos, imágenes, logotipos, diseños y código fuente— es propiedad de La Tejona o de sus proveedores de contenido, y está protegido por las leyes de propiedad intelectual de Bolivia.</p>
+        <p>Queda expresamente prohibida la reproducción, distribución o comunicación pública de cualquier contenido del Sitio sin autorización expresa y por escrito de La Tejona.</p>
+        <p>Las marcas de los fabricantes (Duralit, Ribepar, etc.) son propiedad de sus respectivos titulares.</p>
+
+        <h2 id="responsabilidad">9. Limitación de responsabilidad</h2>
+        <p>La Tejona no será responsable por:</p>
+        <ul>
+          <li>Daños derivados del uso incorrecto de los materiales adquiridos.</li>
+          <li>Errores en la información del Sitio que sean corregidos en tiempo razonable.</li>
+          <li>Interrupciones en el Sitio por mantenimiento, actualizaciones o causas técnicas.</li>
+          <li>Daños indirectos, incidentales o consecuentes derivados del uso del Sitio.</li>
+        </ul>
+        <p>En ningún caso la responsabilidad total de La Tejona excederá el valor del pedido específico objeto del reclamo.</p>
+
+        <h2 id="privacidad">10. Privacidad y datos personales</h2>
+        <p>El tratamiento de tus datos personales se rige por nuestra <a href="privacidad.html">Política de Privacidad</a>, que forma parte integral de estos Términos. Al utilizar el Sitio, aceptás el tratamiento de tus datos según lo descrito en dicha política.</p>
+
+        <h2 id="modificaciones">11. Modificaciones de los términos</h2>
+        <p>La Tejona se reserva el derecho de modificar estos Términos en cualquier momento. Los cambios entrarán en vigor a partir de su publicación en el Sitio. El uso continuado del Sitio tras la publicación de los cambios implica la aceptación de los nuevos Términos.</p>
+        <p>Te recomendamos revisar periódicamente estos Términos. La fecha de última actualización siempre estará visible al inicio de este documento.</p>
+
+        <h2 id="ley">12. Ley aplicable y jurisdicción</h2>
+        <p>Estos Términos se rigen por las leyes de Bolivia. Para cualquier controversia derivada de estos Términos o del uso del Sitio, las partes se someten a la jurisdicción de los tribunales ordinarios de la ciudad de La Paz, Bolivia, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+        <p>Antes de iniciar cualquier acción legal, las partes se comprometen a intentar resolver el conflicto de forma amigable en un plazo de 30 días hábiles.</p>
+
+        <h2 id="contacto">13. Contacto</h2>
+        <p>Para consultas sobre estos Términos y Condiciones, podés contactarnos:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:info@latejona.com.bo">info@latejona.com.bo</a></li>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/59121234567" target="_blank" rel="noopener">+591 2 123-4567</a></li>
+          <li><strong>Dirección:</strong> La Paz, Bolivia</li>
+          <li><strong>Horario de atención:</strong> Lunes a Viernes 8:00–18:00, Sábados 9:00–13:00</li>
+        </ul>
+        <p>Ver también: <a href="privacidad.html">Política de Privacidad</a> | <a href="cookies.html">Política de Cookies</a></p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/TEJONA-LOGOS-E-IMAGENES-500X500.png" alt="La Tejona" style="max-height:52px;width:auto;margin-bottom:18px;filter:brightness(0) invert(1);opacity:0.9;" />
+        <p class="footer-desc">Distribuidora líder de materiales de construcción en Bolivia. Conectamos proyectos con calidad.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2.5"/></svg></a>
+          <a href="https://wa.me/59121234567" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>La Paz, Bolivia</span></div>
+        <div class="footer-contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.82 19.79 19.79 0 012 3.18 2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>+591 2 123-4567</span></div>
+        <div class="footer-contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>info@latejona.com.bo</span></div>
+      </div>
+      <div>
+        <div class="footer-col-title">Productos</div>
+        <ul class="footer-links">
+          <li><a href="productos.html">Tejas Españolas</a></li>
+          <li><a href="productos.html">Flexitejas</a></li>
+          <li><a href="productos.html">Placas Cementicia</a></li>
+          <li><a href="productos.html">Pinturas Ribepar</a></li>
+          <li><a href="productos.html">Ver catálogo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+          <li><a href="cookies.html">Política de cookies</a></li>
+          <li><a href="terminos.html">Términos y condiciones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 La Tejona. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links">
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="terminos.html">Términos</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/59121234567" id="wa-float" target="_blank" rel="noopener">
+  <div class="wa-tooltip">¿Necesitás una cotización?</div>
+  <div class="wa-btn"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+</a>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+  function closeMobileNav() { hamburger.classList.remove('open'); mobileNav.classList.remove('open'); }
+</script>
+</body>
+</html>
