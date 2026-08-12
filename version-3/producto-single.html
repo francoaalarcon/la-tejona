@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teja Duralit 2.44 × 1.10 5mm (TD244) — La Tejona | Materiales de Construcción</title>
+  <meta name="description" content="Teja Duralit ondulada 2.44 × 1.10 m, 5mm espesor. Fibrocemento de alta resistencia para techado industrial y residencial. Consultá precio sin compromiso — La Tejona, La Paz, Bolivia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px; color: #222;
+      background: #f6f6f8; line-height: 1.6; overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Design tokens ─────────────────────────────────────────── */
+    :root {
+      --red:       #cc0000;
+      --red-hover: #a80000;
+      --dark:      #1a1a1a;
+      --black:     #000000;
+      --bg:        #f6f6f8;
+      --bg-alt:    #ecedef;
+      --white:     #ffffff;
+      --border:    #dddddd;
+      --gold:      #e8a020;
+      --font-head: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius:    12px;
+      --shadow:    0 4px 24px rgba(0,0,0,0.10);
+      --shadow-hover: 0 8px 36px rgba(204,0,0,0.18);
+      --transition: 0.3s ease;
+    }
+
+    /* ─── Utilities ─────────────────────────────────────────────── */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700; color: var(--dark); line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-title span { color: var(--red); }
+    .divider {
+      width: 56px; height: 4px;
+      background: linear-gradient(to right, var(--red), var(--gold));
+      border-radius: 4px; margin: 14px 0 28px;
+    }
+
+    /* ─── Buttons ───────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 8px;
+      font-family: var(--font-head); font-size: 0.92rem; font-weight: 600;
+      cursor: pointer; transition: var(--transition);
+      border: 2px solid transparent; white-space: nowrap;
+    }
+    .btn-primary { background: var(--red); color: #fff; border-color: var(--red); }
+    .btn-primary:hover { background: var(--red-hover); border-color: var(--red-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(204,0,0,0.30); }
+    .btn-wa { background: #25d366; color: #fff; border-color: #25d366; font-size: 1rem; padding: 15px 28px; width: 100%; justify-content: center; }
+    .btn-wa:hover { background: #20b858; border-color: #20b858; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.35); }
+    .btn-outline-dark { background: transparent; color: var(--dark); border-color: var(--dark); width: 100%; justify-content: center; }
+    .btn-outline-dark:hover { background: var(--dark); color: #fff; }
+    .btn-outline-red { background: transparent; color: var(--red); border-color: var(--red); }
+    .btn-outline-red:hover { background: var(--red); color: #fff; }
+    .btn-sm { padding: 7px 16px; font-size: 0.80rem; }
+
+    /* ─── Fade-in animation ─────────────────────────────────────── */
+    .fade-in {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.10s; }
+    .fade-in-delay-2 { transition-delay: 0.20s; }
+    .fade-in-delay-3 { transition-delay: 0.30s; }
+    .fade-in-delay-4 { transition-delay: 0.40s; }
+
+    /* ══════════════════════════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════════════════════════ */
+    #navbar {
+      position: fixed; top: 0; left: 0; width: 100%;
+      z-index: 1000; background: var(--dark);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+      padding: 12px 0; transition: padding var(--transition);
+    }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .nav-logo img { max-height: 50px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.88);
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;
+      padding: 8px 14px; border-radius: 6px;
+      transition: var(--transition); white-space: nowrap;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: #fff; background: rgba(255,255,255,0.12); }
+    .nav-links a.active { color: var(--gold); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .nav-tel { color: rgba(255,255,255,0.75); font-size: 0.85rem; display: flex; align-items: center; gap: 6px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: var(--transition); }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    .mobile-nav {
+      display: none; position: fixed; inset: 0;
+      background: var(--dark); z-index: 999;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a { color: #fff; font-family: var(--font-head); font-size: 1.4rem; font-weight: 600; padding: 12px 24px; }
+    @media (max-width: 900px) {
+      .nav-links, .nav-tel { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       BREADCRUMB BAR
+    ══════════════════════════════════════════════════════════════ */
+    #breadcrumb-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      margin-top: 74px;
+    }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.82rem; color: #888; flex-wrap: wrap;
+    }
+    .breadcrumb a { color: #666; transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--red); }
+    .breadcrumb-sep { color: #bbb; font-size: 0.75rem; }
+    .breadcrumb span:last-child { color: var(--dark); font-weight: 500; }
+
+    /* ══════════════════════════════════════════════════════════════
+       PRODUCT SECTION
+    ══════════════════════════════════════════════════════════════ */
+    #product-section { padding: 48px 0 64px; }
+    .product-layout {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .product-layout { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ── Gallery ── */
+    .product-gallery {}
+    .gallery-main {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .gallery-main img {
+      width: 100%; height: 420px;
+      object-fit: cover;
+      transition: opacity 0.4s ease;
+    }
+    .gallery-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--dark); color: #fff;
+      font-family: var(--font-head); font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 50px;
+    }
+    .gallery-thumbs {
+      display: flex; gap: 10px;
+    }
+    .gallery-thumb {
+      flex: 1; height: 88px;
+      border-radius: 8px; overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer; transition: var(--transition);
+      background: var(--bg-alt);
+    }
+    .gallery-thumb.active { border-color: var(--red); }
+    .gallery-thumb:hover { border-color: var(--red); opacity: 0.85; }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    /* tinted thumbnails */
+    .thumb-natural { filter: grayscale(0); }
+    .thumb-rojo    { filter: sepia(0.6) saturate(2) hue-rotate(-20deg); }
+    .thumb-ladrillo{ filter: sepia(0.8) saturate(1.6) hue-rotate(0deg); }
+
+    /* ── Product info ── */
+    .product-info {}
+    .product-meta {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .cat-pill {
+      display: inline-block;
+      background: #1a1a1a; color: #fff;
+      font-family: var(--font-head);
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.10em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 50px;
+    }
+    .code-badge {
+      font-family: 'Courier New', monospace;
+      font-size: 0.80rem; color: #888;
+      background: var(--bg-alt);
+      padding: 4px 10px; border-radius: 6px;
+      border: 1px solid var(--border);
+      letter-spacing: 0.04em;
+    }
+    .product-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800; color: var(--dark);
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .product-desc-short {
+      font-size: 0.95rem; color: #555;
+      line-height: 1.72; margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Specs table */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+      font-size: 0.88rem;
+    }
+    .specs-table tr:nth-child(even) { background: var(--bg-alt); }
+    .specs-table tr:nth-child(odd)  { background: #fff; }
+    .specs-table td {
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      line-height: 1.4;
+    }
+    .specs-table td:first-child {
+      font-weight: 600; color: #666;
+      width: 42%;
+      font-size: 0.83rem; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .specs-table td:last-child { color: var(--dark); font-weight: 500; }
+
+    /* Variant selector */
+    .variant-section {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .variant-label {
+      font-family: var(--font-head);
+      font-size: 0.78rem; font-weight: 700;
+      color: #888; text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .variant-swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+    .variant-swatch {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.85rem; color: var(--dark); font-weight: 500;
+      background: #fff;
+      user-select: none;
+    }
+    .variant-swatch:hover { border-color: var(--red); }
+    .variant-swatch.selected { border-color: var(--red); background: rgba(204,0,0,0.05); }
+    .swatch-dot {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.15); flex-shrink: 0;
+    }
+    .dot-natural  { background: #b0b0b0; }
+    .dot-rojo     { background: #cc0000; }
+    .dot-ladrillo { background: #b05c3a; }
+
+    /* CTA section */
+    .cta-section { margin-bottom: 24px; }
+    .cta-btns { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+    .cta-trust {
+      text-align: center;
+      font-size: 0.78rem; color: #888;
+      display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
+    }
+    .cta-trust span { display: flex; align-items: center; gap: 4px; }
+    .cta-trust svg { color: #25d366; flex-shrink: 0; }
+
+    /* Share row */
+    .share-row {
+      display: flex; align-items: center; gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem; color: #888;
+    }
+    .share-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-size: 0.80rem; font-family: var(--font-head); font-weight: 600;
+      color: #555; cursor: pointer; transition: var(--transition);
+      background: #fff;
+    }
+    .share-btn:hover { border-color: var(--red); color: var(--red); }
+    .share-btn svg { width: 15px; height: 15px; }
+
+    /* ══════════════════════════════════════════════════════════════
+       TABS SECTION
+    ══════════════════════════════════════════════════════════════ */
+    #tabs-section {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+    }
+    .tabs-nav {
+      display: flex; border-bottom: 1px solid var(--border);
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .tabs-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 18px 28px;
+      font-family: var(--font-head); font-size: 0.88rem; font-weight: 600;
+      color: #888; border: none; background: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer; transition: var(--transition);
+      white-space: nowrap;
+      position: relative; bottom: -1px;
+    }
+    .tab-btn:hover { color: var(--red); }
+    .tab-btn.active { color: var(--red); border-bottom-color: var(--red); }
+
+    .tab-panel { padding: 48px 0; display: none; }
+    .tab-panel.active { display: block; }
+
+    .tab-content { max-width: 780px; }
+    .tab-content p { font-size: 0.95rem; color: #555; line-height: 1.78; margin-bottom: 20px; }
+    .tab-content h3 {
+      font-family: var(--font-head); font-size: 1.05rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 12px; margin-top: 28px;
+    }
+
+    /* Full specs table */
+    .full-specs { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .full-specs th {
+      background: var(--dark); color: #fff;
+      font-family: var(--font-head); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 12px 16px; text-align: left;
+    }
+    .full-specs td {
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      color: var(--dark); font-weight: 500;
+    }
+    .full-specs tr:nth-child(even) td { background: var(--bg-alt); }
+
+    /* Installation steps */
+    .install-steps { display: flex; flex-direction: column; gap: 24px; }
+    .install-step {
+      display: flex; gap: 20px;
+      padding: 20px 24px;
+      background: var(--bg);
+      border-radius: var(--radius);
+      border-left: 4px solid var(--red);
+    }
+    .step-number {
+      width: 40px; height: 40px;
+      border-radius: 50%; background: var(--red); color: #fff;
+      font-family: var(--font-head); font-size: 1rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-body h4 {
+      font-family: var(--font-head); font-size: 0.95rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 6px;
+    }
+    .step-body p { font-size: 0.88rem; color: #666; line-height: 1.65; margin: 0; }
+
+    /* ══════════════════════════════════════════════════════════════
+       RELATED PRODUCTS
+    ══════════════════════════════════════════════════════════════ */
+    #related { background: var(--bg); padding: 64px 0; }
+    .related-header { margin-bottom: 36px; }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 1000px) { .related-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { .related-grid { grid-template-columns: 1fr; } }
+
+    /* Compact card (same as catalog) */
+    .product-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      display: flex; flex-direction: column;
+    }
+    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--red); }
+    .product-card__img { height: 180px; overflow: hidden; background: var(--bg-alt); flex-shrink: 0; }
+    .product-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .product-card:hover .product-card__img img { transform: scale(1.06); }
+    .product-card__body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
+    .product-cat-pill {
+      display: inline-block; font-family: var(--font-head);
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 50px; margin-bottom: 8px; color: #fff; width: fit-content;
+      background: #1a1a1a;
+    }
+    .product-code { font-family: 'Courier New', monospace; font-size: 0.72rem; color: #888; margin-bottom: 4px; letter-spacing: 0.04em; }
+    .product-name { font-family: var(--font-head); font-size: 0.88rem; font-weight: 600; color: var(--dark); line-height: 1.3; margin-bottom: 12px; flex: 1; }
+    .card-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 7px 14px; border-radius: 7px; font-family: var(--font-head);
+      font-size: 0.78rem; font-weight: 600;
+      border: 1.5px solid var(--red); color: var(--red);
+      background: transparent; cursor: pointer; transition: var(--transition); text-decoration: none;
+    }
+    .card-btn:hover { background: var(--red); color: #fff; }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════════ */
+    #footer { background: #0e1c24; color: rgba(255,255,255,0.75); padding: 80px 0 0; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr;
+      gap: 48px; padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+    .footer-desc { font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.50); max-width: 280px; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.10);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.65); transition: var(--transition);
+    }
+    .social-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    .social-btn svg { width: 16px; height: 16px; }
+    .footer-col-title { font-family: var(--font-head); font-size: 0.88rem; font-weight: 600; color: #fff; margin-bottom: 20px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.88rem; color: rgba(255,255,255,0.52); transition: var(--transition); display: flex; align-items: center; gap: 6px; }
+    .footer-links a::before { content: '›'; color: var(--red); font-size: 1rem; }
+    .footer-links a:hover { color: #fff; transform: translateX(4px); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 11px; margin-bottom: 14px; font-size: 0.88rem; color: rgba(255,255,255,0.58); }
+    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--red); }
+    .footer-bottom { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { font-size: 0.8rem; color: rgba(255,255,255,0.35); transition: color var(--transition); }
+    .footer-bottom-links a:hover { color: rgba(255,255,255,0.65); }
+    @media (max-width: 480px) { .footer-bottom { flex-direction: column; text-align: center; } }
+
+    /* ══════════════════════════════════════════════════════════════
+       WHATSAPP FLOTANTE
+    ══════════════════════════════════════════════════════════════ */
+    #wa-float {
+      position: fixed; bottom: 32px; right: 32px; z-index: 900;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+    }
+    .wa-tooltip {
+      background: var(--dark); color: #fff; font-family: var(--font-head);
+      font-size: 0.80rem; font-weight: 600; padding: 8px 16px; border-radius: 8px;
+      white-space: nowrap; opacity: 0; transform: translateX(10px);
+      transition: var(--transition); pointer-events: none; box-shadow: var(--shadow);
+    }
+    #wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+    .wa-btn {
+      width: 58px; height: 58px; border-radius: 50%; background: #25d366;
+      display: flex; align-items: center; justify-content: center; color: #fff;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.42); transition: var(--transition);
+      animation: wa-pulse 2.5s ease infinite;
+    }
+    .wa-btn:hover { background: #20b858; transform: scale(1.08); animation: none; }
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.42); }
+      50% { box-shadow: 0 6px 36px rgba(37,211,102,0.72), 0 0 0 12px rgba(37,211,102,0.08); }
+    }
+    @media (max-width: 768px) {
+      #wa-float { bottom: 20px; right: 20px; }
+      .wa-btn { width: 52px; height: 52px; }
+      .gallery-main img { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <a href="index.html" onclick="closeMobileNav()">Inicio</a>
+  <a href="index.html#como-funciona" onclick="closeMobileNav()">Cómo funciona</a>
+  <a href="productos.html" onclick="closeMobileNav()">Productos</a>
+  <a href="proyectos.html" onclick="closeMobileNav()">Proyectos</a>
+  <a href="nosotros.html" onclick="closeMobileNav()">Nosotros</a>
+  <a href="novedades.html" onclick="closeMobileNav()">Novedades</a>
+  <a href="https://wa.me/59121234567" target="_blank" class="btn btn-primary" style="margin-top:16px;" rel="noopener">Pedir cotización</a>
+</nav>
+
+<!-- NAVBAR -->
+<header id="navbar" role="banner">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo" aria-label="La Tejona — Inicio">
+        <img src="assets/TEJONA-LOGOS-E-IMAGENES-500X500.png" alt="Logo La Tejona" />
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#como-funciona">Cómo funciona</a>
+        <a href="productos.html" class="active">Productos</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="novedades.html">Novedades</a>
+      </nav>
+      <div class="nav-cta">
+        <span class="nav-tel">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +591 2 123-4567
+        </span>
+        <a href="https://wa.me/59121234567" target="_blank" class="btn btn-primary btn-sm" rel="noopener">Pedir cotización</a>
+        <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- BREADCRUMB BAR -->
+<div id="breadcrumb-bar">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="catalogo.html">Catálogo</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="catalogo.html?cat=teja-duralit">Tejas Duralit</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Teja Duralit 2.44 × 1.10 5mm</span>
+    </nav>
+  </div>
+</div>
+
+
+<!-- PRODUCT SECTION -->
+<section id="product-section" aria-label="Ficha de producto">
+  <div class="container">
+    <div class="product-layout">
+
+      <!-- ── GALLERY ── -->
+      <div class="product-gallery fade-in">
+        <div class="gallery-main" id="galleryMain">
+          <img src="assets/FLEXITEJA-1.webp" alt="Teja Duralit 2.44 × 1.10 5mm — Natural" id="mainImg" loading="eager" />
+          <div class="gallery-badge">Duralit</div>
+        </div>
+        <div class="gallery-thumbs" role="group" aria-label="Variantes de color">
+          <div class="gallery-thumb active thumb-natural" data-src="assets/FLEXITEJA-1.webp" data-label="Natural" title="Natural / Gris" tabindex="0" role="button" aria-pressed="true">
+            <img src="assets/FLEXITEJA-1.webp" alt="Variante Natural" class="thumb-natural" />
+          </div>
+          <div class="gallery-thumb thumb-rojo" data-src="assets/FLEXITEJA-1.webp" data-label="Rojo de Fábrica" title="Rojo de Fábrica" tabindex="0" role="button" aria-pressed="false">
+            <img src="assets/FLEXITEJA-1.webp" alt="Variante Rojo de Fábrica" class="thumb-rojo" />
+          </div>
+          <div class="gallery-thumb thumb-ladrillo" data-src="assets/FLEXITEJA-1.webp" data-label="Ladrillo" title="Ladrillo" tabindex="0" role="button" aria-pressed="false">
+            <img src="assets/FLEXITEJA-1.webp" alt="Variante Ladrillo" class="thumb-ladrillo" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PRODUCT INFO ── -->
+      <div class="product-info fade-in fade-in-delay-1">
+
+        <div class="product-meta">
+          <span class="cat-pill">Teja Duralit</span>
+          <span class="code-badge">TD244</span>
+        </div>
+
+        <h1 class="product-title">Teja Duralit 2.44 × 1.10 5mm</h1>
+
+        <p class="product-desc-short">
+          Teja ondulada de fibrocemento Duralit, ideal para techados industriales y residenciales que requieren resistencia, durabilidad y bajo mantenimiento. Disponible en Natural/Gris, Rojo de Fábrica y Ladrillo.
+        </p>
+
+        <!-- Specs table (compact) -->
+        <table class="specs-table" aria-label="Especificaciones principales">
+          <tr><td>Código</td><td>TD244</td></tr>
+          <tr><td>Marca</td><td>Duralit</td></tr>
+          <tr><td>Material</td><td>Fibrocemento</td></tr>
+          <tr><td>Largo</td><td>2.44 m</td></tr>
+          <tr><td>Ancho</td><td>1.10 m</td></tr>
+          <tr><td>Espesor</td><td>5 mm</td></tr>
+          <tr><td>Peso aprox.</td><td>18 kg/und</td></tr>
+          <tr><td>Uso</td><td>Techado industrial y residencial</td></tr>
+        </table>
+
+        <!-- Variant selector -->
+        <div class="variant-section">
+          <div class="variant-label">Color / Variante</div>
+          <div class="variant-swatches" role="radiogroup" aria-label="Selección de color">
+            <div class="variant-swatch selected" data-thumb="0" tabindex="0" role="radio" aria-checked="true">
+              <span class="swatch-dot dot-natural"></span> Natural
+            </div>
+            <div class="variant-swatch" data-thumb="1" tabindex="0" role="radio" aria-checked="false">
+              <span class="swatch-dot dot-rojo"></span> Rojo de Fábrica
+            </div>
+            <div class="variant-swatch" data-thumb="2" tabindex="0" role="radio" aria-checked="false">
+              <span class="swatch-dot dot-ladrillo"></span> Ladrillo
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+          <div class="cta-btns">
+            <a href="https://wa.me/59121234567?text=Hola%20La%20Tejona%2C%20quiero%20consultar%20el%20precio%20de%20la%20Teja%20Duralit%202.44%20%C3%97%201.10%205mm%20(TD244)" target="_blank" class="btn btn-wa" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Consultar precio por WhatsApp
+            </a>
+            <a href="tel:+59121234567" class="btn btn-outline-dark">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Llamar ahora
+            </a>
+          </div>
+          <div class="cta-trust">
+            <span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+              Sin compromiso
+            </span>
+            <span>·</span>
+            <span>Respuesta inmediata</span>
+            <span>·</span>
+            <span>Entrega a obra</span>
+          </div>
+        </div>
+
+        <!-- Share -->
+        <div class="share-row">
+          <span>Compartir:</span>
+          <button class="share-btn" id="shareWa" aria-label="Compartir por WhatsApp">
+            <svg viewBox="0 0 24 24" fill="#25d366"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            WhatsApp
+          </button>
+          <button class="share-btn" id="copyLink" aria-label="Copiar enlace">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            Copiar enlace
+          </button>
+        </div>
+
+      </div><!-- /product-info -->
+    </div><!-- /product-layout -->
+  </div>
+</section>
+
+
+<!-- TABS SECTION -->
+<section id="tabs-section" aria-label="Información del producto">
+  <div class="container">
+    <div class="tabs-nav" role="tablist">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-desc" id="tbtn-desc">Descripción</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-specs" id="tbtn-specs">Especificaciones</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-install" id="tbtn-install">Instalación</button>
+    </div>
+
+    <!-- Description -->
+    <div class="tab-panel active" id="tab-desc" role="tabpanel" aria-labelledby="tbtn-desc">
+      <div class="tab-content fade-in">
+        <p>
+          La <strong>Teja Duralit 2.44 × 1.10 5mm</strong> es una plancha ondulada de fibrocemento fabricada por Duralit bajo estrictos estándares de calidad. Su composición a base de cemento Portland y fibras sintéticas le otorga una resistencia superior a la intemperie, las heladas del altiplano y los rayos UV, garantizando una vida útil prolongada sin requerir mantenimiento frecuente.
+        </p>
+        <p>
+          Es la opción preferida por arquitectos, constructores y maestros de obra en Bolivia para proyectos de techado residencial, industrial y agrícola. Su perfil ondulado facilita el drenaje natural del agua y su diseño liviano reduce la carga estructural del techo, permitiendo construcciones más eficientes. Se comercializa en variantes Natural/Gris (sin pigmentación), Rojo de Fábrica y Ladrillo, integradas directamente en el proceso de fabricación para garantizar la durabilidad del color.
+        </p>
+        <h3>Marcas que respaldan este producto</h3>
+        <p>
+          Distribuido oficialmente por <strong>La Tejona</strong> en Bolivia, con respaldo directo del fabricante <strong>Duralit</strong>. Cada lote cuenta con certificación de origen y garantía de fábrica.
+        </p>
+      </div>
+    </div>
+
+    <!-- Full specs -->
+    <div class="tab-panel" id="tab-specs" role="tabpanel" aria-labelledby="tbtn-specs">
+      <div class="tab-content fade-in">
+        <table class="full-specs" aria-label="Especificaciones técnicas completas">
+          <thead>
+            <tr>
+              <th>Parámetro</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Código de producto</td><td>TD244</td></tr>
+            <tr><td>Marca</td><td>Duralit</td></tr>
+            <tr><td>Material</td><td>Fibrocemento (cemento Portland + fibras sintéticas)</td></tr>
+            <tr><td>Tipo</td><td>Teja ondulada</td></tr>
+            <tr><td>Largo</td><td>2.44 m</td></tr>
+            <tr><td>Ancho</td><td>1.10 m</td></tr>
+            <tr><td>Espesor</td><td>5 mm</td></tr>
+            <tr><td>Peso por unidad</td><td>Aprox. 18 kg</td></tr>
+            <tr><td>Ancho útil cubierto</td><td>Aprox. 1.04 m (solapado estándar)</td></tr>
+            <tr><td>Colores disponibles</td><td>Natural / Gris, Rojo de Fábrica, Ladrillo</td></tr>
+            <tr><td>Resistencia al fuego</td><td>No combustible</td></tr>
+            <tr><td>Resistencia al granizo</td><td>Alta (apta para altiplano boliviano)</td></tr>
+            <tr><td>Pendiente mínima recomendada</td><td>15° (27%)</td></tr>
+            <tr><td>Uso recomendado</td><td>Techado industrial, residencial y agrícola</td></tr>
+            <tr><td>País de fabricación</td><td>Bolivia</td></tr>
+            <tr><td>Norma de referencia</td><td>NB 614 / ISO 8336</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Installation guide -->
+    <div class="tab-panel" id="tab-install" role="tabpanel" aria-labelledby="tbtn-install">
+      <div class="tab-content fade-in">
+        <p>Guía básica de instalación en 3 pasos. Para proyectos industriales o estructuras de mayor complejidad, consultá con un profesional habilitado.</p>
+        <div class="install-steps">
+          <div class="install-step">
+            <div class="step-number">1</div>
+            <div class="step-body">
+              <h4>Preparación de la estructura portante</h4>
+              <p>Verificá que la estructura metálica o de madera tenga la pendiente mínima de 15° (27%). Colocá las correas o tirantes con una separación máxima de 1.40 m para tejas de 2.44 m. Asegurate de que la estructura esté nivelada y libre de humedad.</p>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-number">2</div>
+            <div class="step-body">
+              <h4>Colocación de las tejas</h4>
+              <p>Comenzá desde el alero hacia la cumbrera, con un solapado lateral de al menos una ondulación y un solapado longitudinal mínimo de 20 cm (mayor pendiente puede requerir menos solapado). Alineá las tejas con cuerda tensada para garantizar filas rectas. No las apoyés en la cresta de la onda al perforar.</p>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-number">3</div>
+            <div class="step-body">
+              <h4>Fijación con pernos y accesorios</h4>
+              <p>Utilizá pernos tirafondo o autoperforantes adecuados (disponibles en nuestro catálogo: PERTI45, PERAP55) con arandela neoprene para garantizar hermeticidad. Perforá la teja en la cresta de la onda, nunca en el valle. Apretá sin exceder el torque recomendado para evitar fisuras. Colocá las cumbreras correspondientes (CD20 o CDARTGSUP) al finalizar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- RELATED PRODUCTS -->
+<section id="related" aria-label="Productos relacionados">
+  <div class="container">
+    <div class="related-header fade-in">
+      <h2 class="section-title">Productos <span>relacionados</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="related-grid">
+
+      <article class="product-card fade-in">
+        <div class="product-card__img">
+          <img src="assets/FLEXITEJA-1.webp" alt="Teja Duralit 1.83 x 1.10 5mm" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-cat-pill">Teja Duralit</span>
+          <div class="product-code">TD183</div>
+          <div class="product-name">Teja Duralit 1.83 × 1.10 5mm</div>
+          <a href="producto-single.html" class="card-btn">Consultar</a>
+        </div>
+      </article>
+
+      <article class="product-card fade-in fade-in-delay-1">
+        <div class="product-card__img">
+          <img src="assets/FLEXITEJA-1.webp" alt="Teja Duralit 3.05 x 1.10 5mm" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-cat-pill">Teja Duralit</span>
+          <div class="product-code">TD305</div>
+          <div class="product-name">Teja Duralit 3.05 × 1.10 5mm</div>
+          <a href="producto-single.html" class="card-btn">Consultar</a>
+        </div>
+      </article>
+
+      <article class="product-card fade-in fade-in-delay-2">
+        <div class="product-card__img">
+          <img src="assets/FLEXITEJA-1.webp" alt="Teja Duralit 1.83 x 1.10 5mm Rojo de Fábrica" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-cat-pill">Teja Duralit</span>
+          <div class="product-code">TD183ROFD</div>
+          <div class="product-name">Teja Duralit 1.83 × 1.10 5mm Color Rojo de Fábrica</div>
+          <a href="producto-single.html" class="card-btn">Consultar</a>
+        </div>
+      </article>
+
+      <article class="product-card fade-in fade-in-delay-3">
+        <div class="product-card__img">
+          <img src="assets/FLEXITEJA-1.webp" alt="Teja Duralit 3.05 x 1.10 5mm Rojo de Fábrica" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-cat-pill">Teja Duralit</span>
+          <div class="product-code">TD305ROFD</div>
+          <div class="product-name">Teja Duralit 3.05 × 1.10 5mm Color Rojo de Fábrica</div>
+          <a href="producto-single.html" class="card-btn">Consultar</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/TEJONA-LOGOS-E-IMAGENES-500X500.png" alt="La Tejona" style="max-height:52px; width:auto; margin-bottom:18px; filter:brightness(0) invert(1); opacity:0.9;" />
+        <p class="footer-desc">Distribuidora líder de materiales de construcción en Bolivia. Conectamos proyectos con calidad, desde La Paz hasta cada rincón del país.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2.5"/></svg>
+          </a>
+          <a href="https://wa.me/59121234567" class="social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>La Paz, Bolivia</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.82 19.79 19.79 0 012 3.18 2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>+591 2 123-4567</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>info@latejona.com.bo</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Productos</div>
+        <ul class="footer-links">
+          <li><a href="catalogo.html?cat=teja-espanola">Tejas Españolas</a></li>
+          <li><a href="catalogo.html?cat=teja-duralit">Tejas Duralit</a></li>
+          <li><a href="catalogo.html?cat=maxiplaca">MaxiPlaca</a></li>
+          <li><a href="catalogo.html?cat=tanque">Tanques</a></li>
+          <li><a href="catalogo.html">Ver catálogo completo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+          <li><a href="cookies.html">Política de cookies</a></li>
+          <li><a href="terminos.html">Términos y condiciones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 La Tejona. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links">
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="terminos.html">Términos</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/59121234567" id="wa-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <div class="wa-tooltip">¿Necesitás una cotización?</div>
+  <div class="wa-btn">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </div>
+</a>
+
+
+<script>
+  /* ── Mobile nav ──────────────────────────────────── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    mobileNav.setAttribute('aria-hidden', !mobileNav.classList.contains('open'));
+    hamburger.setAttribute('aria-expanded', mobileNav.classList.contains('open'));
+  });
+  function closeMobileNav() {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  /* ── Fade-in observer ───────────────────────────── */
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+  /* ── Gallery thumbnails ─────────────────────────── */
+  const mainImg  = document.getElementById('mainImg');
+  const thumbs   = document.querySelectorAll('.gallery-thumb');
+  const swatches = document.querySelectorAll('.variant-swatch');
+
+  function selectVariant(index) {
+    const thumb = thumbs[index];
+    // Update main image
+    mainImg.style.opacity = '0.5';
+    setTimeout(() => {
+      mainImg.src = thumb.dataset.src;
+      // Apply tint filter to main image to simulate color variant
+      mainImg.className = thumb.querySelector('img').className;
+      mainImg.style.opacity = '1';
+    }, 200);
+    // Update active thumb
+    thumbs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed', 'false'); });
+    thumb.classList.add('active');
+    thumb.setAttribute('aria-pressed', 'true');
+    // Update swatch
+    swatches.forEach(s => { s.classList.remove('selected'); s.setAttribute('aria-checked', 'false'); });
+    swatches[index].classList.add('selected');
+    swatches[index].setAttribute('aria-checked', 'true');
+  }
+
+  thumbs.forEach((thumb, i) => {
+    thumb.addEventListener('click', () => selectVariant(i));
+    thumb.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectVariant(i); } });
+  });
+  swatches.forEach((swatch, i) => {
+    swatch.addEventListener('click', () => selectVariant(i));
+    swatch.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectVariant(i); } });
+  });
+
+  /* ── Tabs ────────────────────────────────────────── */
+  const tabBtns   = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabBtns.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      tabPanels[i].classList.add('active');
+      // Re-trigger fade-in for tab content
+      tabPanels[i].querySelectorAll('.fade-in').forEach(el => {
+        el.classList.remove('visible');
+        setTimeout(() => el.classList.add('visible'), 50);
+      });
+    });
+  });
+
+  /* ── Share buttons ───────────────────────────────── */
+  document.getElementById('shareWa').addEventListener('click', () => {
+    const msg = encodeURIComponent('Mirá este producto de La Tejona: Teja Duralit 2.44 × 1.10 5mm (TD244) — ' + window.location.href);
+    window.open('https://wa.me/?text=' + msg, '_blank');
+  });
+  document.getElementById('copyLink').addEventListener('click', function() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      this.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><polyline points="20 6 9 17 4 12"/></svg> ¡Copiado!';
+      setTimeout(() => { this.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> Copiar enlace'; }, 2000);
+    });
+  });
+</script>
+</body>
+</html>
